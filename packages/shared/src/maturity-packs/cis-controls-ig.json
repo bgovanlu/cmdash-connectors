@@ -1,0 +1,1020 @@
+{
+  "packFormatVersion": 1,
+  "model": {
+    "slug": "cis-controls-ig",
+    "name": "CIS Controls v8.1 Implementation Groups",
+    "version": "8.1",
+    "description": "Maturity model built from the CIS Critical Security Controls v8.1 Implementation Group (IG) ladder. Levels are CIS's own IG1/IG2/IG3 tiers (cumulative Safeguard sets: 56 / 130 / 153 of 153 total Safeguards). Dimensions are the 18 CIS Controls themselves, reshaped from CIS's Control-then-Safeguard-then-IG structure into this engine's model-ladder/dimension-list shape (per docs/design/maturity-engine.md #4 and scripts/maturity/author-pack.md #3.3): each dimension's ordinal reflects overall Safeguard-implementation depth for that Control, derived from crosswalk seeding against every seeded Safeguard under that Control number in the built-in \"cis-controls\" (CIS Controls v8) framework. This pack does not encode which individual Safeguards CIS itself assigns to IG1 vs IG2 vs IG3 — that per-Safeguard granularity is not present in the seeded framework and is not fabricated here; consult CIS's own IG worksheet for exact per-Safeguard IG assignment.",
+    "minOrdinal": 1,
+    "maxOrdinal": 3,
+    "provenance": {
+      "publisher": "Center for Internet Security",
+      "sourceDoc": "CIS Critical Security Controls v8.1",
+      "sourceUrl": "https://www.cisecurity.org/controls",
+      "license": "CIS terms of use (free use with attribution)"
+    }
+  },
+  "levels": [
+    {
+      "ordinal": 1,
+      "key": "ig1",
+      "name": "IG1: Essential Cyber Hygiene",
+      "description": "The foundational set of 56 of the 153 total CIS Safeguards, designated by CIS as essential cyber hygiene: an emerging minimum standard of information security that CIS recommends for every enterprise regardless of sector or size. IG1 Safeguards are generally implementable with limited in-house cybersecurity expertise, using largely off-the-shelf hardware and software, and are aimed at thwarting general, non-targeted attacks. IG1 is the on-ramp to the CIS Controls."
+    },
+    {
+      "ordinal": 2,
+      "key": "ig2",
+      "name": "IG2: Implementation Group 2",
+      "description": "Builds on IG1 with 74 additional Safeguards (130 cumulative of 153). CIS aims IG2 at enterprises with more resources and greater IT complexity — typically multiple departments with differing risk profiles, staff dedicated to managing and protecting IT infrastructure, and responsibility for sensitive client or organizational data. IG2 Safeguards help security teams cope with increased operational complexity and often assume more technical expertise to plan and execute than IG1."
+    },
+    {
+      "ordinal": 3,
+      "key": "ig3",
+      "name": "IG3: Implementation Group 3",
+      "description": "The complete set of all 153 CIS Safeguards, adding 23 more beyond IG2's 130. CIS aims IG3 at mature enterprises with dedicated security staff whose Safeguards must reduce the impact of sophisticated, targeted attacks and address the availability of critical services as well as the confidentiality and integrity of sensitive data. IG3 Safeguards frequently require specialized skills and coordination to design, implement, and operate."
+    }
+  ],
+  "dimensions": [
+    {
+      "key": "inventory-enterprise-assets",
+      "name": "Inventory and Control of Enterprise Assets",
+      "description": "Actively manage (inventory, track, and correct) all enterprise assets — end-user devices, network devices, IoT devices, and servers — connected to the infrastructure physically, virtually, remotely, and in cloud environments, so the organization knows what needs to be monitored and protected.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 1,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "1.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "1.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "1.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "1.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "1.5",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "inventory-software-assets",
+      "name": "Inventory and Control of Software Assets",
+      "description": "Actively manage (inventory, track, and correct) all software — operating systems and applications — on the network so only authorized software is installed and can execute, and unauthorized and unmanaged software is found and prevented from installation or execution.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 2,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "2.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "2.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "2.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "2.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "2.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "2.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "2.7",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "data-protection",
+      "name": "Data Protection",
+      "description": "Develop processes and technical controls to identify, classify, securely handle, retain, and dispose of data, in order to prevent data loss, unauthorized access to data, and inadvertent exposure of sensitive data.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 3,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.7",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.8",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.9",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.10",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.11",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.12",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.13",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.14",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "secure-configuration",
+      "name": "Secure Configuration of Enterprise Assets and Software",
+      "description": "Establish and maintain the secure configuration of enterprise assets (end-user devices, servers, network devices) and software (operating systems and applications).",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 4,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.7",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.8",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.9",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.10",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.11",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.12",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "account-management",
+      "name": "Account Management",
+      "description": "Use processes and tools to assign and manage authorization to credentials for user accounts, including administrator accounts, as well as service accounts, to enterprise assets and software.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 5,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "5.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "5.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "5.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "5.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "5.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "5.6",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "access-control-management",
+      "name": "Access Control Management",
+      "description": "Use processes and tools to create, assign, manage, and revoke access credentials and privileges for user, administrator, and service accounts for enterprise assets and software.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 6,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "6.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "6.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "6.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "6.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "6.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "6.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "6.7",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "6.8",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "vulnerability-management",
+      "name": "Continuous Vulnerability Management",
+      "description": "Develop a plan to continuously assess and track vulnerabilities on all enterprise assets within the enterprise's infrastructure, in order to remediate them and minimize the window of opportunity for attackers, while monitoring public and private industry sources for new threat and vulnerability information.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 7,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "7.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "7.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "7.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "7.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "7.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "7.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "7.7",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "audit-log-management",
+      "name": "Audit Log Management",
+      "description": "Collect, alert, review, and retain audit logs of events that could help detect, understand, or recover from an attack.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 8,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.7",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.8",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.9",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.10",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.11",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.12",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "email-browser-protections",
+      "name": "Email and Web Browser Protections",
+      "description": "Improve protections and detections of threats from email and web vectors, as these are opportunities for attackers to manipulate human behavior through direct engagement.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 9,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "9.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "9.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "9.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "9.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "9.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "9.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "9.7",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "malware-defenses",
+      "name": "Malware Defenses",
+      "description": "Prevent or control the installation, spread, and execution of malicious applications, code, or scripts on enterprise assets.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 10,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "10.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "10.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "10.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "10.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "10.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "10.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "10.7",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "data-recovery",
+      "name": "Data Recovery",
+      "description": "Establish and maintain data recovery practices sufficient to restore in-scope enterprise assets to a pre-incident and trusted state.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 11,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "11.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "11.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "11.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "11.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "11.5",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "network-infrastructure-management",
+      "name": "Network Infrastructure Management",
+      "description": "Establish, implement, and actively manage (track, report, correct) network devices, in order to prevent attackers from exploiting vulnerable network services and access points.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 12,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "12.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "12.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "12.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "12.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "12.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "12.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "12.7",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "12.8",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "network-monitoring-defense",
+      "name": "Network Monitoring and Defense",
+      "description": "Operate processes and tooling to establish and maintain comprehensive network monitoring and defense against security threats across the enterprise's network infrastructure and user base.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 13,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "13.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "13.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "13.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "13.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "13.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "13.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "13.7",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "13.8",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "13.9",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "13.10",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "13.11",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "security-awareness-training",
+      "name": "Security Awareness and Skills Training",
+      "description": "Establish and maintain a security awareness program to influence behavior among the workforce to be security-conscious and properly skilled to reduce cybersecurity risks to the enterprise.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 14,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "14.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "14.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "14.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "14.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "14.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "14.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "14.7",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "14.8",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "14.9",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "service-provider-management",
+      "name": "Service Provider Management",
+      "description": "Develop a process to evaluate service providers who hold sensitive data, or are responsible for an enterprise's critical IT platforms or processes, to ensure these providers are protecting those platforms and data appropriately.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 15,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "15.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "15.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "15.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "15.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "15.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "15.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "15.7",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "application-software-security",
+      "name": "Application Software Security",
+      "description": "Manage the security lifecycle of in-house-developed, hosted, or acquired software in order to prevent, detect, and remediate security weaknesses before they can impact the enterprise.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 16,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.7",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.8",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.9",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.10",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.11",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.12",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.13",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.14",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "incident-response-management",
+      "name": "Incident Response Management",
+      "description": "Establish a program to develop and maintain an incident response capability (policies, plans, procedures, defined roles, training, and communications) to prepare, detect, and quickly respond to an attack.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 17,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "17.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "17.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "17.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "17.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "17.5",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "17.6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "17.7",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "17.8",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "17.9",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "penetration-testing",
+      "name": "Penetration Testing",
+      "description": "Test the effectiveness and resiliency of enterprise assets through identifying and exploiting weaknesses in controls (people, processes, and technology), and simulating the objectives and actions of an attacker.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 18,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "18.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "18.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "18.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "18.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "18.5",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    }
+  ]
+}

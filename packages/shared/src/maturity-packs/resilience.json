@@ -1,0 +1,67 @@
+{
+  "packFormatVersion": 1,
+  "model": {
+    "slug": "resilience",
+    "name": "Resilience Maturity",
+    "version": "1.0",
+    "description": "H.4 — a dedicated, cmdash-authored maturity ladder for recovery capability: whether an organization's DECLARED Recovery Time/Point Objectives (RTO/RPO) for its crown-jewel systems (Asset.declaredRtoMinutes/declaredRpoMinutes) are backed by TESTED recovery evidence, not just policy on paper. Same 'declared vs tested' shape O.6 established for control efficacy (attested vs validated), applied to a different capability. A single-dimension model kept separate from the broader Recover function so a tenant's actual, measured recovery capability is independently drillable rather than blended into a coarser control family. Maps to NIST CSF 2's RC.RP (Incident Recovery Plan Execution) category so both an attested crosswalk baseline (via ControlAssessment on RC.RP-05/RC.RP-03) and live telemetry (tenant-submitted recovery-drill results, observationType=RECOVERY_TEST_RESULT) can seed and score the same dimension. cmdash's own production database restore drill (docs/runbooks/database-restore.md) is the first real recording against this dimension.",
+    "minOrdinal": 1,
+    "maxOrdinal": 4,
+    "provenance": {
+      "publisher": "cmdash",
+      "sourceDoc": "docs/design/telemetry-scoring.md (H.4 — resilience maturity module)",
+      "sourceUrl": "https://cmdash.net/docs/resilience-maturity",
+      "license": "proprietary"
+    }
+  },
+  "levels": [
+    {
+      "ordinal": 1,
+      "key": "undeclared",
+      "name": "Undeclared",
+      "description": "Crown-jewel systems carry no declared RTO/RPO targets, or targets exist only in an offline document no one maintains. Recovery capability, if any, has never been measured against a stated objective."
+    },
+    {
+      "ordinal": 2,
+      "key": "declared",
+      "name": "Declared",
+      "description": "Crown-jewel systems have explicit RTO/RPO targets recorded (Asset.declaredRtoMinutes/declaredRpoMinutes), but no recovery drill has ever measured whether those targets are actually achievable. The declaration is a claim, not yet evidence."
+    },
+    {
+      "ordinal": 3,
+      "key": "tested",
+      "name": "Tested",
+      "description": "At least one recovery drill has been performed and recorded (RECOVERY_TEST_RESULT) against each crown-jewel system's declared target within the current freshness window, with a written runbook of what actually happened — not just what was planned."
+    },
+    {
+      "ordinal": 4,
+      "key": "proven",
+      "name": "Proven",
+      "description": "Recovery drills are performed on a fixed, recurring cadence, consistently meet the declared RTO/RPO (or the declared target has been honestly revised to match measured reality), and a drill failure demonstrably triggers a runbook update and a re-test — the program closes the loop from measurement to correction to re-measurement, the same discipline H.1's Adaptive tier describes for human risk."
+    }
+  ],
+  "dimensions": [
+    {
+      "key": "resilience",
+      "name": "Recovery Resilience",
+      "description": "Whether a crown-jewel Asset's declared RTO/RPO target is backed by a tested recovery result, normalized by the shared `normalizeObservation` curve (packages/shared/src/maturity/telemetry.ts, observationType=RECOVERY_TEST_RESULT) — PASS when the drill met both declared targets, PARTIAL when it met one, FAIL when it met neither. An asset with a declared target and no drill on file contributes no telemetry (not a fabricated FAIL) — see RecoveryTestResultService.mapRecoveryTestOutcome.",
+      "domain": "Recover",
+      "weight": 1,
+      "sortOrder": 0,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RC.RP-05",
+          "weight": 1.0
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RC.RP-03",
+          "weight": 0.5
+        }
+      ],
+      "previousKeys": []
+    }
+  ]
+}

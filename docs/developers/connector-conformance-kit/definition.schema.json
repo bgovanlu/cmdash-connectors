@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cmdash.com/schemas/connector-definition.schema.json",
+  "title": "CMDash connector definition",
+  "description": "The shareable, non-secret shape a ConnectorTemplate.definition (and a CustomConnector row) carries — item 1.1/1.4 of ROADMAP-COMPETITIVE. This is DATA, never code: an HTTP request template plus a JSONPath field-mapping list, with no credential anywhere in it. Portable JSON Schema so a contributor can validate a candidate definition with any tool in any language, not only validate.mjs in this folder — see README.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["endpointUrl", "authType", "fieldMappings"],
+  "properties": {
+    "endpointUrl": {
+      "type": "string",
+      "maxLength": 2048,
+      "format": "uri",
+      "pattern": "^https?://",
+      "description": "Must be http(s). CMDash additionally requires this to resolve to a PUBLIC address at both save time and run time (SSRF protection, apps/api/src/common/ssrf.ts) — a check this schema cannot express, since it depends on live DNS."
+    },
+    "httpMethod": {
+      "type": "string",
+      "enum": ["GET", "POST", "PUT", "PATCH"],
+      "default": "GET"
+    },
+    "requestHeaders": {
+      "type": ["object", "null"],
+      "description": "Static, NON-SECRET headers only. A credential belongs in the tenant's own auth profile at install time, never in a header template — CMDash's server-side validator scans for this but a contributor should not rely on that as the only check.",
+      "additionalProperties": { "type": "string" }
+    },
+    "requestBody": {
+      "type": ["string", "null"],
+      "maxLength": 10000
+    },
+    "authType": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "API_KEY_HEADER",
+        "API_KEY_QUERY",
+        "BEARER_TOKEN",
+        "BASIC_AUTH",
+        "OAUTH2_CLIENT_CREDENTIALS"
+      ],
+      "description": "Authorization-code OAuth2 is deliberately not a value here — see docs/integration-setup-custom-connector.md."
+    },
+    "fieldMappings": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 50,
+      "items": { "$ref": "#/$defs/fieldMapping" }
+    }
+  },
+  "$defs": {
+    "fieldMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["jsonPath", "targetField", "target"],
+      "properties": {
+        "jsonPath": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "A DELIBERATELY NARROW subset: $, .name, ['name'], [0], [*] only. No filter expressions ([?(...)]), no recursive descent (..), no slices, no unions, no parentheses — see validate.mjs's parseJsonPath, which is the authoritative parity copy of apps/api/src/integration/custom/json-path.ts. This schema cannot express the grammar itself (JSON Schema has no context-free-grammar constraint); run validate.mjs for that half of the check."
+        },
+        "targetField": { "type": "string", "maxLength": 120, "minLength": 1 },
+        "target": { "type": "string", "enum": ["OBSERVATION", "EVIDENCE"] },
+        "observationType": {
+          "type": "string",
+          "description": "Required when target is OBSERVATION; must be absent or ignored when target is EVIDENCE. This is a FROZEN vocabulary (schema.prisma's own comment: 'a new source class is a change to the design doc + this enum, never an adapter-local decision') — do not invent a value outside this list.",
+          "enum": [
+            "CSPM_CONTROL_STATE",
+            "DETECTION_TECHNIQUE",
+            "ATTACK_COVERAGE",
+            "VULN_SLA_ADHERENCE",
+            "IDENTITY_POSTURE",
+            "BAS_CONTROL_VALIDATION",
+            "SCAP_RULE_RESULT",
+            "HUMAN_RISK",
+            "RECOVERY_TEST_RESULT"
+          ]
+        }
+      },
+      "if": { "properties": { "target": { "const": "OBSERVATION" } } },
+      "then": { "required": ["jsonPath", "targetField", "target", "observationType"] }
+    }
+  }
+}

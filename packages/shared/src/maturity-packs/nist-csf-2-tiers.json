@@ -1,0 +1,292 @@
+{
+  "packFormatVersion": 1,
+  "model": {
+    "slug": "nist-csf-2-tiers",
+    "name": "NIST CSF 2.0 Implementation Tiers",
+    "version": "2.1",
+    "description": "NIST Cybersecurity Framework 2.0 Implementation Tiers — a four-rung ladder (Partial to Adaptive) that characterizes the rigor of an organization's cybersecurity risk governance (GOVERN) and risk management (IDENTIFY, PROTECT, DETECT, RESPOND, RECOVER) practices, per Appendix B of NIST CSWP 29. v2.1 (ROADMAP-V50 G6.4) additionally maps `fedramp` (this product's curated NIST 800-53 Rev 5 subset) into the identify/protect/detect/respond dimensions below, so a STIG/SCAP import's DISA CCI-crosswalked observations (apps/api/src/stig/stig-cci-crosswalk.ts) can move this pack's score. Every fedramp entry is DERIVED — never hand-authored — by composing two already-curated, already-shipped crosswalks (fedramp -> nist-csf 1.1, apps/api/prisma/seeds/crosswalks-expanded.ts; nist-csf 1.1 -> nist-csf-2, crosswalks-csf2.ts) at combined confidence >= 0.85, and attached only to a dimension whose nist-csf-2 controlMappings already reference the chained-to subcategory (scripts/maturity/derive-fedramp-mapping.mjs — also this pack's CI regression check for these entries). No fedramp chain cleared that bar for govern or recover, so those two dimensions carry no fedramp entry.",
+    "minOrdinal": 1,
+    "maxOrdinal": 4,
+    "provenance": {
+      "publisher": "NIST",
+      "sourceDoc": "NIST CSF 2.0 (February 2024)",
+      "sourceUrl": "https://www.nist.gov/cyberframework",
+      "license": "public-domain"
+    }
+  },
+  "levels": [
+    {
+      "ordinal": 1,
+      "key": "tier-1",
+      "name": "Tier 1: Partial",
+      "description": "Application of the organizational cybersecurity risk strategy is managed in an ad hoc manner, with prioritization not formally based on objectives or the threat environment. There is limited organization-wide awareness of cybersecurity risk, risk management happens on an irregular, case-by-case basis, and the organization is generally unaware of the risks posed by its suppliers and the products and services it acquires and uses."
+    },
+    {
+      "ordinal": 2,
+      "key": "tier-2",
+      "name": "Tier 2: Risk Informed",
+      "description": "Risk management practices are approved by management but may not yet be established as organization-wide policy, with prioritization of cybersecurity activities directly informed by risk objectives, the threat environment, or business/mission requirements. There is organizational awareness of cybersecurity risk, but assessment and information sharing remain informal and inconsistent, and the organization does not act consistently or formally on the risks posed by its suppliers and the products and services it acquires and uses."
+    },
+    {
+      "ordinal": 3,
+      "key": "tier-3",
+      "name": "Tier 3: Repeatable",
+      "description": "The organization's risk management practices are formally approved and expressed as policy, with risk-informed policies, processes, and procedures defined, implemented as intended, reviewed, and regularly updated. There is an organization-wide approach to managing cybersecurity risk with information routinely shared, consistent methods for responding to change, and formal mechanisms (such as written agreements and governance structures) for acting on supplier and third-party risk."
+    },
+    {
+      "ordinal": 4,
+      "key": "tier-4",
+      "name": "Tier 4: Adaptive",
+      "description": "There is an organization-wide approach to managing cybersecurity risk in which executives monitor cybersecurity risk in the same context as other organizational risks and cybersecurity risk management is part of the organizational culture. The organization continuously adapts its practices based on lessons learned and predictive indicators, uses real-time or near-real-time information to act on supplier and third-party risk, and cybersecurity information is constantly shared throughout the organization and with authorized third parties."
+    }
+  ],
+  "dimensions": [
+    {
+      "key": "govern",
+      "name": "Govern (GV)",
+      "description": "The organization's cybersecurity risk management strategy, expectations, and policy are established, communicated, and monitored. Govern addresses organizational context, risk management strategy, cybersecurity supply chain risk management, roles/responsibilities/authorities, policy, and oversight, and informs how the other five functions are implemented.",
+      "domain": "Govern",
+      "weight": 1,
+      "sortOrder": 0,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.OC-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.RM-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.RR-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.PO-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.OV-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.SC-01",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "identify",
+      "name": "Identify (ID)",
+      "description": "The organization's current cybersecurity risks are understood. Inventories of the organization's assets (data, hardware, software, systems, facilities, services, people) and suppliers, plus risk assessment and improvement processes, surface the gaps that inform effort under all six functions. v2.1: fedramp CA-2 (Security Assessments) added — chains to this dimension's ID.RA-01 via the curated fedramp->nist-csf 1.1->nist-csf-2 crosswalk at combined confidence 0.855; see model.description.",
+      "domain": "Identify",
+      "weight": 1,
+      "sortOrder": 1,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.AM-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.AM-02",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.RA-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.IM-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "fedramp",
+          "controlKey": "CA-2",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "protect",
+      "name": "Protect (PR)",
+      "description": "Safeguards to manage the organization's cybersecurity risks are used, covering identity management, authentication, and access control; awareness and training; data security; platform security; and the resilience of technology infrastructure. v2.1: fedramp AC-2 (Account Management, chains to PR.AA-01 at 0.9025), CM-2 (Baseline Configuration, chains to PR.PS-01 at 0.855), and SC-28 (Protection of Information at Rest, chains to PR.DS-01 at 0.9025) added via the curated crosswalk composition — see model.description.",
+      "domain": "Protect",
+      "weight": 1,
+      "sortOrder": 2,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.AA-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.AT-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.DS-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.PS-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.IR-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "fedramp",
+          "controlKey": "AC-2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "fedramp",
+          "controlKey": "CM-2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "fedramp",
+          "controlKey": "SC-28",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "detect",
+      "name": "Detect (DE)",
+      "description": "Possible cybersecurity attacks and compromises are found and analyzed, enabling timely discovery and analysis of anomalies, indicators of compromise, and other potentially adverse events that support incident response and recovery. v2.1: fedramp AU-6 (Audit Review, Analysis, and Reporting, chains to DE.AE-02 at 0.855) and SI-4 (System Monitoring, chains to DE.CM-01 at 0.9025) added via the curated crosswalk composition — see model.description.",
+      "domain": "Detect",
+      "weight": 1,
+      "sortOrder": 3,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "DE.CM-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "DE.CM-09",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "DE.AE-02",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "DE.AE-03",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "fedramp",
+          "controlKey": "AU-6",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "fedramp",
+          "controlKey": "SI-4",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "respond",
+      "name": "Respond (RS)",
+      "description": "Actions regarding a detected cybersecurity incident are taken, covering incident management, analysis, mitigation, reporting, and communication, supporting the ability to contain the effects of cybersecurity incidents. v2.1: fedramp IR-4 (Incident Handling, chains to RS.MA-01 at 0.855) and IR-6 (Incident Reporting, chains to RS.CO-02 at 0.855) added via the curated crosswalk composition — see model.description.",
+      "domain": "Respond",
+      "weight": 1,
+      "sortOrder": 4,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RS.MA-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RS.AN-03",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RS.CO-02",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RS.MI-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "fedramp",
+          "controlKey": "IR-4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "fedramp",
+          "controlKey": "IR-6",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "recover",
+      "name": "Recover (RC)",
+      "description": "Assets and operations affected by a cybersecurity incident are restored, supporting the timely restoration of normal operations to reduce the effects of cybersecurity incidents and enable appropriate communication during recovery efforts.",
+      "domain": "Recover",
+      "weight": 1,
+      "sortOrder": 5,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RC.RP-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RC.RP-03",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RC.CO-03",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RC.CO-04",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "repo": "bgovanlu/cmdash-connectors",
+  "version": "0.2.0",
+  "license": "Apache-2.0",
+  "sources": [
+    "packages/connector-runtime",
+    "packages/collector-cli",
+    "docs/developers/connector-conformance-kit",
+    "docs/developers/connector-development.md",
+    "docs/content-hub/submitting-a-pack.md",
+    "packages/shared/src/content-hub/community-packs",
+    "packages/shared/src/content-hub/trust-root.json",
+    "packages/shared/src/maturity-packs",
+    "packages/shared/src/envelope/envelope-contract.fixture.json",
+    "tsconfig.base.json"
+  ],
+  "files": {
+    ".github/workflows/ci.yml": {
+      "sha256": "1756e6a80ad1124c53443f2ce1a378c2c81e4b9027eb9c3dbcc8308b68ff3861",
+      "mode": "100644"
+    },
+    ".github/workflows/publish.yml": {
+      "sha256": "3960deb80bb4a6d3ece077caa07be45380afc2a99319e710ec6e83fb52cd8a2d",
+      "mode": "100644"
+    },
+    "CONTRIBUTING.md": {
+      "sha256": "a4eb6b312a179fbb03791e9afd29ab4ba68929dc4f18c217b1747a3ee987b452",
+      "mode": "100644"
+    },
+    "LICENSE": {
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "mode": "100644"
+    },
+    "NOTICE": {
+      "sha256": "28ef9e70580ad85f407302ce50ecb81352820ad1caf2c9912aa6141d78e69d33",
+      "mode": "100644"
+    },
+    "README.md": {
+      "sha256": "824500d123723c3af07c04d962640d4852d6ee6cb1acaef6b4b0813c52ff952d",
+      "mode": "100644"
+    },
+    "SECURITY.md": {
+      "sha256": "7b79918bf8c2656d05a7e01bc4f883cfebc5af77d9ca121153bb6e2204472c8f",
+      "mode": "100644"
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "sha256": "3acdef3ea1be57ba0fe2330a685eb965a358bb7507b9a64eb6e7d687f09fd4e2",
+      "mode": "100644"
+    },
+    "docs/content-hub/submitting-a-pack.md": {
+      "sha256": "9616ec33f116641cb56f8d6738defc2b9138252c4dc2b9c6308d118751f8669e",
+      "mode": "100644"
+    },
+    "docs/developers/connector-conformance-kit/README.md": {
+      "sha256": "8c80d7a83e47b84cf96c732476737406ee3125cde431c8485bfbf83b17a56d0d",
+      "mode": "100644"
+    },
+    "docs/developers/connector-conformance-kit/definition.schema.json": {
+      "sha256": "691c4061be42e0355c4a058efa95de3fad1c3fa770e53f4734cae733edd4431b",
+      "mode": "100644"
+    },
+    "docs/developers/connector-conformance-kit/examples/invalid-example.json": {
+      "sha256": "938c6eddde6f363259937aeda32aae697410f1fe8d8ca190bcbaed8a1dbb7ddc",
+      "mode": "100644"
+    },
+    "docs/developers/connector-conformance-kit/examples/valid-example.json": {
+      "sha256": "1c67bd40fdeaed06dfbbf79e58dc634ba765beddb957b4f7e6a79d9814977e61",
+      "mode": "100644"
+    },
+    "docs/developers/connector-conformance-kit/validate.mjs": {
+      "sha256": "7ef026fdb2dfa5db644407a144acc0da7a65097b33c099072f43a76b0d1b6146",
+      "mode": "100644"
+    },
+    "docs/developers/connector-development.md": {
+      "sha256": "5c7e059777174c96b1a737c5a8441e1efc1f5746c14dfb51dd3c204a1b79d825",
+      "mode": "100644"
+    },
+    "package.json": {
+      "sha256": "26a2994ec2e20fd5c3a61a80bb2a339944552a69f62ddbe438c3c83a89b3685e",
+      "mode": "100644"
+    },
+    "packages/collector-cli/LICENSE": {
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "mode": "100644"
+    },
+    "packages/collector-cli/NOTICE": {
+      "sha256": "d52f8a43d6ca972869d098d873fea1d3577a80bec0850e6d1157660a4c03bca8",
+      "mode": "100644"
+    },
+    "packages/collector-cli/README.md": {
+      "sha256": "7b1101881588f5d09a33fd30fe94f8bcade78a3d388a346a558a528078b8e564",
+      "mode": "100644"
+    },
+    "packages/collector-cli/package.json": {
+      "sha256": "b2b5bbb05a626e1b73ab60c9562b7ee8e36834b6cf4032a199a10d59ea45bd72",
+      "mode": "100644"
+    },
+    "packages/collector-cli/src/cli.ts": {
+      "sha256": "ae1266f058e32ec6a4498056940253bc70cd1152a82435c0a96dfc655e0f58ef",
+      "mode": "100644"
+    },
+    "packages/collector-cli/src/config.ts": {
+      "sha256": "3e1ef33a01adb9a33f6b7fdb6a167f52e72d871372adac066065d1555c3543e6",
+      "mode": "100644"
+    },
+    "packages/collector-cli/src/enroll.ts": {
+      "sha256": "48e544b2eac2d48819343864aa0638c05faf21cf7865aa1924cc9c10e6ea2889",
+      "mode": "100644"
+    },
+    "packages/collector-cli/src/envelope.test.ts": {
+      "sha256": "dca1febed2026bd76cb4c2773a8c60638b1f3f27e38e364362f1f1ce92b26876",
+      "mode": "100644"
+    },
+    "packages/collector-cli/src/envelope.ts": {
+      "sha256": "e02f7f17de675a5c1a9582b21e230aba81a0d5b96733f514fdb56f81eec8e2d7",
+      "mode": "100644"
+    },
+    "packages/collector-cli/src/help.test.ts": {
+      "sha256": "93f21ff511704e7fe4844c3330bbea0ca76a98d9d60aab7884a64baced0226d9",
+      "mode": "100644"
+    },
+    "packages/collector-cli/src/help.ts": {
+      "sha256": "554610172a03e03950a4c1b6f1df56dceaca5fc8323c3acf585b57fc8fe0ab6b",
+      "mode": "100644"
+    },
+    "packages/collector-cli/src/identity.test.ts": {
+      "sha256": "d6a05608e468497040cfa893f4b74f38b5bfb05ac88668329740ecb882f71431",
+      "mode": "100644"
+    },
+    "packages/collector-cli/src/identity.ts": {
+      "sha256": "c9626633be4be67c7574ddb9ce281734d77d9f0c4020c28a4d568ed2b2791475",
+      "mode": "100644"
+    },
+    "packages/collector-cli/src/index.ts": {
+      "sha256": "59364824f4aef5d2da56b3aa93433cccd5c71733752dbc9ef578c304380b8202",
+      "mode": "100644"
+    },
+    "packages/collector-cli/src/run.test.ts": {
+      "sha256": "e40dfb8b186aa3acabfeb24477b142e225b6d5f2b3f24fa79dcb3864ecdfbccd",
+      "mode": "100644"
+    },
+    "packages/collector-cli/src/run.ts": {
+      "sha256": "51f74ec4a06d7232dfd44d8b54a56e4bfa7a8b2840b6d6353349c87a780f6930",
+      "mode": "100644"
+    },
+    "packages/collector-cli/test-support/envelope.ts": {
+      "sha256": "76fb1fe8ef14304ca036d30c926ba1c6ecad97e4314822eb1f127c37c602e386",
+      "mode": "100644"
+    },
+    "packages/collector-cli/tsconfig.json": {
+      "sha256": "4f9aaca1937b78ea10ed4b48d26427876b59e87ca23733fb8e13f770572da1d6",
+      "mode": "100644"
+    },
+    "packages/collector-cli/vitest.config.ts": {
+      "sha256": "0cdd5ae03dd90baac68c2cb5c897c14d1639f8325cd341b4b0582d4d605a5593",
+      "mode": "100644"
+    },
+    "packages/collector-cli/vitest.coverage.config.ts": {
+      "sha256": "dd563389c66036455b9269fefa5807cbd4f0a9c78dc06b42474468477a6c49c4",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/CONTRIBUTING.md": {
+      "sha256": "a4eb6b312a179fbb03791e9afd29ab4ba68929dc4f18c217b1747a3ee987b452",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/LICENSE": {
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/NOTICE": {
+      "sha256": "606cfabda82ad84f19748525035016b8c380cb8bea89ea5207dec1027469944c",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/README.md": {
+      "sha256": "16548e11ac186dac9f252a81a107c14dff02a69691538a088c2a34cb4dd86599",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/package.json": {
+      "sha256": "a4d61231ba63a141e822a40ba7b901c979b7b4a653f22c7585c8d9c86f6c49ac",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/src/apply-mappings.test.ts": {
+      "sha256": "2cd69fe116790e309d602a0e4420a9e821a555a4ddd7dfdbc0f2286ba6769fdf",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/src/apply-mappings.ts": {
+      "sha256": "5930145d7077c6cf2c8bd649b1e9e5ece80193275f70f8944b33c35d9570561c",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/src/collector-attestation.test.ts": {
+      "sha256": "4255a529509a46818f08ee97f939a0b27c7ee5a6eae7099f92a4adc9d3bc6a5e",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/src/collector-attestation.ts": {
+      "sha256": "4b75ee5736e07d1f3b9b92c673ac8e7ff15e91efacb3b854e938868a2ae26d34",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/src/index.ts": {
+      "sha256": "3addbd38a72c65132cf5a803e9e7b1cde078578c1ffbc7606183671ea71f430b",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/src/json-path.ts": {
+      "sha256": "c4f5b705295b5777d536e1fefb56081087da1e006a96ba73fbae4a96be6e04b4",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/src/signature.test.ts": {
+      "sha256": "07bf972534fb508083ba2fb3d8335ba4278aeac68678b7fb01cb6952e773f67d",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/src/signature.ts": {
+      "sha256": "1fe260b39a7eeb4849e53393adfde1e47aafef049fde22952ce8f63454ae87d1",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/src/types.ts": {
+      "sha256": "fe8f9f7e66105ccc8cb791a03a8468bc22948104e84acc8ce1de344548848bb5",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/tsconfig.json": {
+      "sha256": "c792e66fb3d040d6300675110d042d2ee3792591ae06fe08a5850ef89423ef29",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/vitest.config.ts": {
+      "sha256": "0cdd5ae03dd90baac68c2cb5c897c14d1639f8325cd341b4b0582d4d605a5593",
+      "mode": "100644"
+    },
+    "packages/connector-runtime/vitest.coverage.config.ts": {
+      "sha256": "adcc4a2b94b4c1cdb870a818792bd8ce835825da576f9627ef8096f7e2c41cb2",
+      "mode": "100644"
+    },
+    "packages/shared/src/content-hub/community-packs/c2m2/pack.json": {
+      "sha256": "ea595fce11fe8bc12bedde494cc13b473a353f53de88f6b8e4776b7d7c5d7cef",
+      "mode": "100644"
+    },
+    "packages/shared/src/content-hub/community-packs/c2m2/signature.json": {
+      "sha256": "55048c6a2d4e9043e5568214bb3d76b401f2eef062466e4fc699e0225875a797",
+      "mode": "100644"
+    },
+    "packages/shared/src/content-hub/community-packs/cis-controls-ig/pack.json": {
+      "sha256": "c9123524bf40daf7dfdf4049a1abfbf84c7bc874e4d28c832b9390035692f9a7",
+      "mode": "100644"
+    },
+    "packages/shared/src/content-hub/community-packs/cis-controls-ig/signature.json": {
+      "sha256": "e0098bb3b62cef686d2f7f6602b4937f048044859cc65187fd06ee8458452f00",
+      "mode": "100644"
+    },
+    "packages/shared/src/content-hub/community-packs/cisa-ztmm/pack.json": {
+      "sha256": "2361d4ec0e6050b3e6c62fa5793f0591bed4d9e18c4d6e9dd580faee30949cba",
+      "mode": "100644"
+    },
+    "packages/shared/src/content-hub/community-packs/cisa-ztmm/signature.json": {
+      "sha256": "b50ddd33f9bd4078e2e7a3a65f8c4d574599086c6e0d5ad39ce1390d9f27e482",
+      "mode": "100644"
+    },
+    "packages/shared/src/content-hub/community-packs/nist-csf-2-tiers/pack.json": {
+      "sha256": "7d0164f58264e2103c57a511e5fa65f1f806d2037b45355d2ec0bdca2da80c70",
+      "mode": "100644"
+    },
+    "packages/shared/src/content-hub/community-packs/nist-csf-2-tiers/signature.json": {
+      "sha256": "3c9e623fd0ae00418a82765faa6a10a93620f12eb8094350db413bc1ffe3b4bc",
+      "mode": "100644"
+    },
+    "packages/shared/src/content-hub/trust-root.json": {
+      "sha256": "377fe60782254287d6fd19403e5da952901dc2b638cb99d0c8fb0b008c630437",
+      "mode": "100644"
+    },
+    "packages/shared/src/envelope/envelope-contract.fixture.json": {
+      "sha256": "33892bf7365d1b2400cb818e7b3eeded0d7a2c737e1778c3c3f96eb1a5f1e3d3",
+      "mode": "100644"
+    },
+    "packages/shared/src/maturity-packs/README.md": {
+      "sha256": "c415f4fdce102a331158213eb43a0dfad4568c2d55b9218d1223ae0491a8475f",
+      "mode": "100644"
+    },
+    "packages/shared/src/maturity-packs/c2m2.json": {
+      "sha256": "9f497674046d226d2d94e83bf323158bb87644726c4c83c738925261d89a4b1a",
+      "mode": "100644"
+    },
+    "packages/shared/src/maturity-packs/cis-controls-ig.json": {
+      "sha256": "cec3b488dc8df7c62cfec1554ba93c821a4764751637d3299476d57d9c23b003",
+      "mode": "100644"
+    },
+    "packages/shared/src/maturity-packs/cisa-ztmm.json": {
+      "sha256": "47129021774ec173c9dee7987d9fa938192a92190762ced8d0a4d7e4730d261b",
+      "mode": "100644"
+    },
+    "packages/shared/src/maturity-packs/human-risk.json": {
+      "sha256": "2061eaa143cb5f96233cd3b9ace04bd8d9d9c14c0dc9892579799613e9c17acc",
+      "mode": "100644"
+    },
+    "packages/shared/src/maturity-packs/identity-posture.json": {
+      "sha256": "452360ef420d72578dae3227865338ae945db775b4d53fd682a59d1ef8f5ee24",
+      "mode": "100644"
+    },
+    "packages/shared/src/maturity-packs/nist-csf-2-tiers.json": {
+      "sha256": "c73a9aa030d88a4e3e890bc3fc0884ea33c8b96f211bc2880a9fa991feca8c1b",
+      "mode": "100644"
+    },
+    "packages/shared/src/maturity-packs/pack.schema.json": {
+      "sha256": "37760dff1ed5440f190474836a0a115935ae5be665bbce6d64db481544b6babd",
+      "mode": "100644"
+    },
+    "packages/shared/src/maturity-packs/pqc-readiness.json": {
+      "sha256": "6c309e820147c976778bb7776056a4ebc81ff75219cbebf3b5f41020b011c930",
+      "mode": "100644"
+    },
+    "packages/shared/src/maturity-packs/resilience.json": {
+      "sha256": "b4b64d06dfaccd31c853095cb0270caad578fa8fbee2037331ea7bbd3095d45c",
+      "mode": "100644"
+    },
+    "tsconfig.base.json": {
+      "sha256": "53f7eee3cdf8e9f18ecbde3b22e46b17754b871d5f181c74cf9f1eb11bc6a4ae",
+      "mode": "100644"
+    }
+  }
+}

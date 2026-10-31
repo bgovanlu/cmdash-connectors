@@ -1,0 +1,92 @@
+{
+  "packFormatVersion": 1,
+  "model": {
+    "slug": "identity-posture",
+    "name": "Identity & Access Posture Maturity",
+    "version": "1.0",
+    "description": "cmdash-authored maturity model for O.5 (Identity Posture) — docs/design/telemetry-scoring.md's IDENTITY_POSTURE observation class. Three dimensions (MFA enforcement, account lifecycle hygiene, privileged access governance) each map to CIS Controls v8 Account/Access Management safeguards and NIST CSF 2.0 PR.AA subcategories, and are additionally fed by continuous OBSERVED-tier telemetry from identity-provider adapters (Okta, Microsoft Entra ID) via MaturityObservation, normalized through the shared normalizeObservation IDENTITY_POSTURE curve.",
+    "minOrdinal": 1,
+    "maxOrdinal": 4,
+    "provenance": {
+      "publisher": "cmdash",
+      "sourceDoc": "docs/design/telemetry-scoring.md — O.5 Identity Posture dimension",
+      "sourceUrl": "https://cmdash.net/docs/maturity-packs/identity-posture",
+      "license": "cmdash proprietary — internal maturity content pack, no external license"
+    }
+  },
+  "levels": [
+    {
+      "ordinal": 1,
+      "key": "initial",
+      "name": "Initial: Ad Hoc Identity Practices",
+      "description": "MFA enrollment, account lifecycle, and privileged-access reviews are inconsistent and largely manual. Dormant and orphaned accounts persist unnoticed. Administrative privilege is granted broadly and rarely revisited."
+    },
+    {
+      "ordinal": 2,
+      "key": "developing",
+      "name": "Developing: Baseline Identity Controls",
+      "description": "MFA is required for at least the most sensitive access paths (admin, remote, externally-exposed apps). Dormant-account detection exists but runs ad hoc. Privileged accounts are inventoried, though restriction is inconsistent."
+    },
+    {
+      "ordinal": 3,
+      "key": "managed",
+      "name": "Managed: Enforced & Monitored Identity Controls",
+      "description": "MFA is enforced broadly across the workforce, not just privileged users. Dormant/stale accounts are disabled on a defined cadence. Privileged access follows least-privilege, is centrally managed, and is periodically reviewed."
+    },
+    {
+      "ordinal": 4,
+      "key": "optimized",
+      "name": "Optimized: Continuously Validated Identity Assurance",
+      "description": "MFA coverage, dormant-account ratio, and privileged-account ratio are continuously telemetered and trending favorably, not just point-in-time attested. Identity posture regressions are caught and remediated automatically or near-automatically."
+    }
+  ],
+  "dimensions": [
+    {
+      "key": "mfa-enforcement",
+      "name": "Multi-Factor Authentication Enforcement",
+      "description": "The breadth and consistency of MFA enforcement across the workforce — not just for administrators, but for every account capable of accessing sensitive systems. Continuously fed by the tenant's identity-provider MFA-coverage percentage (Okta/Entra ID), projected from the same fact PostureEngine's MFA_COVERAGE signal already ingests (docs/design/telemetry-scoring.md §6) rather than re-ingested as a second copy.",
+      "domain": "Identity",
+      "weight": 1.2,
+      "sortOrder": 1,
+      "levelDescriptors": null,
+      "controlMappings": [
+        { "frameworkSlug": "nist-csf-2", "controlKey": "PR.AA-03", "weight": 1.5 },
+        { "frameworkSlug": "cis-controls", "controlKey": "6.3", "weight": 0.5 },
+        { "frameworkSlug": "cis-controls", "controlKey": "6.4", "weight": 0.5 },
+        { "frameworkSlug": "cis-controls", "controlKey": "6.5", "weight": 1 }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "account-lifecycle-hygiene",
+      "name": "Account Lifecycle Hygiene",
+      "description": "How consistently dormant, stale, and orphaned accounts are detected and disabled. Continuously fed by identity-provider dormant/stale-account-ratio observations (IDENTITY_POSTURE, `dormantAccountRatio` metric) — a lower ratio scores higher.",
+      "domain": "Identity",
+      "weight": 1,
+      "sortOrder": 2,
+      "levelDescriptors": null,
+      "controlMappings": [
+        { "frameworkSlug": "cis-controls", "controlKey": "5.3", "weight": 1.5 },
+        { "frameworkSlug": "cis-controls", "controlKey": "5.6", "weight": 0.5 },
+        { "frameworkSlug": "nist-csf-2", "controlKey": "PR.AA-01", "weight": 1 }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "privileged-access-governance",
+      "name": "Privileged Access Governance",
+      "description": "The concentration and governance of standing administrative privilege — fewer, better-managed privileged accounts reduce the blast radius of any single compromised credential. Continuously fed by identity-provider privileged-account-ratio observations (IDENTITY_POSTURE, `privilegedAccountRatio` metric) — a lower ratio scores higher.",
+      "domain": "Identity",
+      "weight": 1.1,
+      "sortOrder": 3,
+      "levelDescriptors": null,
+      "controlMappings": [
+        { "frameworkSlug": "cis-controls", "controlKey": "5.4", "weight": 1.5 },
+        { "frameworkSlug": "cis-controls", "controlKey": "6.7", "weight": 0.5 },
+        { "frameworkSlug": "cis-controls", "controlKey": "6.8", "weight": 0.5 },
+        { "frameworkSlug": "nist-csf-2", "controlKey": "PR.AA-05", "weight": 1 }
+      ],
+      "previousKeys": []
+    }
+  ]
+}

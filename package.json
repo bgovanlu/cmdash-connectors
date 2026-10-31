@@ -1,0 +1,20 @@
+{
+  "name": "cmdash-connectors",
+  "version": "0.0.0",
+  "private": true,
+  "description": "CMDash connector runtime, self-hosted collector CLI, connector conformance kit, community packs and maturity packs. Apache-2.0. Repository root; the packages are in their own directories.",
+  "license": "Apache-2.0",
+  "workspaces": [
+    "packages/connector-runtime",
+    "packages/collector-cli"
+  ],
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "4.1.12"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

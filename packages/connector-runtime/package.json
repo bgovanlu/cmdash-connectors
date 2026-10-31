@@ -1,0 +1,45 @@
+{
+  "name": "@cmdash/connector-runtime",
+  "version": "0.1.0",
+  "description": "Shared execution engine for declarative custom connectors — used by both the CMDash API adapter and the self-hosted collector CLI.",
+  "author": "CMDash <support@cmdash.com>",
+  "keywords": ["cmdash", "connector", "connector-runtime", "jsonpath", "collector", "grc", "compliance"],
+  "homepage": "https://github.com/bgovanlu/cmdash/tree/main/packages/connector-runtime#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "github:bgovanlu/cmdash",
+    "directory": "packages/connector-runtime"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:ci": "vitest run --config vitest.coverage.config.ts --coverage --reporter=default --reporter=junit --outputFile=test-results.xml",
+    "test:coverage": "vitest run --config vitest.coverage.config.ts --coverage",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {}
+}

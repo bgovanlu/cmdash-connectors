@@ -1,0 +1,67 @@
+{
+  "packFormatVersion": 1,
+  "model": {
+    "slug": "human-risk",
+    "name": "Human Risk Maturity",
+    "version": "1.0",
+    "description": "H.1 — a dedicated, cmdash-authored maturity ladder for the human element of security: phishing-simulation resilience and security-awareness-training discipline. Deliberately a single-dimension model kept separate from NIST CSF 2's broader 'Protect' bucket so a tenant's human-risk posture is independently drillable to its own observations, freshness, and business-unit rollup rather than blended into a coarser control family. The dimension maps to NIST CSF 2's PR.AT (Awareness and Training) category so both an attested crosswalk baseline (via ControlAssessment on PR.AT-01/PR.AT-02) and live telemetry (KnowBe4 / Proofpoint Security Awareness Training MaturityObservations, observationType=HUMAN_RISK) can seed and score the same dimension. See docs/design/telemetry-scoring.md §1 (H.1) for the observation contract this pack's telemetry side rides on.",
+    "minOrdinal": 1,
+    "maxOrdinal": 4,
+    "provenance": {
+      "publisher": "cmdash",
+      "sourceDoc": "docs/design/telemetry-scoring.md (H.1 — human-risk maturity module)",
+      "sourceUrl": "https://cmdash.net/docs/human-risk-maturity",
+      "license": "proprietary"
+    }
+  },
+  "levels": [
+    {
+      "ordinal": 1,
+      "key": "ad-hoc",
+      "name": "Ad Hoc",
+      "description": "No recurring phishing-simulation program and no tracked security-awareness-training completion. Any awareness activity is one-off, unmeasured, and not reviewed by anyone accountable for the outcome."
+    },
+    {
+      "ordinal": 2,
+      "key": "programmatic",
+      "name": "Programmatic",
+      "description": "A recurring phishing-simulation cadence and mandatory annual/onboarding awareness training exist tenant-wide, but results are not broken out by business unit, repeat-clicker behavior isn't tracked, and there is no defined escalation when a unit under-performs."
+    },
+    {
+      "ordinal": 3,
+      "key": "managed",
+      "name": "Managed",
+      "description": "Phishing fail rate, repeat-clicker ratio, and training completion are tracked continuously and reviewed per business unit (subject to a minimum-group-size privacy floor); under-performing units trigger a targeted awareness-policy attestation campaign through the existing policy-attestation workflow rather than an ad hoc email."
+    },
+    {
+      "ordinal": 4,
+      "key": "adaptive",
+      "name": "Adaptive",
+      "description": "Training content and simulation difficulty are tuned from measured risk data (e.g. targeting repeat clickers with role-appropriate refreshers), completion time and fail-rate trends are reviewed on a fixed cadence by an accountable owner, and the program demonstrably closes the loop from signal to remediation to re-measurement."
+    }
+  ],
+  "dimensions": [
+    {
+      "key": "human-risk",
+      "name": "Human Risk & Security Awareness",
+      "description": "Composite of phishing-simulation fail rate, repeat-clicker ratio, security-awareness-training completion rate, and time-to-complete — the four H.1 metrics normalized by the shared `normalizeObservation` curve (packages/shared/src/maturity/telemetry.ts, observationType=HUMAN_RISK) and rolled up tenant-wide and per-business-unit (k-anonymity gated — see apps/api/src/human-risk/human-risk.service.ts).",
+      "domain": "Protect",
+      "weight": 1,
+      "sortOrder": 0,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.AT-01",
+          "weight": 1.0
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.AT-02",
+          "weight": 0.5
+        }
+      ],
+      "previousKeys": []
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "endpointUrl": "https://api.example.com/v1/status",
+  "httpMethod": "GET",
+  "requestHeaders": {
+    "Accept": "application/json"
+  },
+  "authType": "BEARER_TOKEN",
+  "fieldMappings": [
+    {
+      "jsonPath": "$.data.controls[*].state",
+      "targetField": "controlState",
+      "target": "OBSERVATION",
+      "observationType": "CSPM_CONTROL_STATE"
+    },
+    {
+      "jsonPath": "$.data.lastAuditReportUrl",
+      "targetField": "lastAuditReportUrl",
+      "target": "EVIDENCE"
+    }
+  ]
+}

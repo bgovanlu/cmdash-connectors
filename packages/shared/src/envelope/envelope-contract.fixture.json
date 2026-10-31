@@ -1,0 +1,919 @@
+{
+  "_comment": "ROADMAP-A1009 P1. Wire bodies of the REAL ResponseInterceptor. apps/api/test/client-envelope-contract-a1009-p1.spec.ts proves every `wire` below is exactly what the interceptor produces for `handlerResult` (requestId and timestamp normalised to the template); every first-party client test unwraps the same bodies. Edit by hand only together with that spec.",
+  "envelopeTemplate": {
+    "success": true,
+    "requestId": "req-contract-fixture-0001",
+    "timestamp": "2026-10-09T12:00:00.000Z"
+  },
+  "cases": [
+    {
+      "name": "webhooks.list",
+      "request": {
+        "method": "GET",
+        "path": "/v2/webhooks"
+      },
+      "handlerResult": [
+        {
+          "id": "0e1f6b46-3a5d-4c3b-9d7a-0c8f6d7e2a01",
+          "url": "https://hooks.zapier.com/hooks/standard/1/abc",
+          "events": [
+            "risk.created"
+          ],
+          "isActive": true,
+          "createdAt": "2026-10-01T09:30:00.000Z",
+          "secretRotatedAt": null,
+          "previousSecretExpiresAt": null,
+          "sequenceCounter": 3,
+          "consecutiveFailures": 0,
+          "circuitOpenedAt": null,
+          "circuitOpenReason": null
+        },
+        {
+          "id": "9a2c1d4e-7b6f-4e0a-8c15-3d4b5a6f7e02",
+          "url": "https://n8n.example.com/webhook/cmdash",
+          "events": [
+            "risk.created",
+            "risk.updated"
+          ],
+          "isActive": true,
+          "createdAt": "2026-10-01T09:30:00.000Z",
+          "secretRotatedAt": null,
+          "previousSecretExpiresAt": null,
+          "sequenceCounter": 3,
+          "consecutiveFailures": 0,
+          "circuitOpenedAt": null,
+          "circuitOpenReason": null
+        }
+      ],
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": [
+          {
+            "id": "0e1f6b46-3a5d-4c3b-9d7a-0c8f6d7e2a01",
+            "url": "https://hooks.zapier.com/hooks/standard/1/abc",
+            "events": [
+              "risk.created"
+            ],
+            "isActive": true,
+            "createdAt": "2026-10-01T09:30:00.000Z",
+            "secretRotatedAt": null,
+            "previousSecretExpiresAt": null,
+            "sequenceCounter": 3,
+            "consecutiveFailures": 0,
+            "circuitOpenedAt": null,
+            "circuitOpenReason": null
+          },
+          {
+            "id": "9a2c1d4e-7b6f-4e0a-8c15-3d4b5a6f7e02",
+            "url": "https://n8n.example.com/webhook/cmdash",
+            "events": [
+              "risk.created",
+              "risk.updated"
+            ],
+            "isActive": true,
+            "createdAt": "2026-10-01T09:30:00.000Z",
+            "secretRotatedAt": null,
+            "previousSecretExpiresAt": null,
+            "sequenceCounter": 3,
+            "consecutiveFailures": 0,
+            "circuitOpenedAt": null,
+            "circuitOpenReason": null
+          }
+        ]
+      },
+      "data": [
+        {
+          "id": "0e1f6b46-3a5d-4c3b-9d7a-0c8f6d7e2a01",
+          "url": "https://hooks.zapier.com/hooks/standard/1/abc",
+          "events": [
+            "risk.created"
+          ],
+          "isActive": true,
+          "createdAt": "2026-10-01T09:30:00.000Z",
+          "secretRotatedAt": null,
+          "previousSecretExpiresAt": null,
+          "sequenceCounter": 3,
+          "consecutiveFailures": 0,
+          "circuitOpenedAt": null,
+          "circuitOpenReason": null
+        },
+        {
+          "id": "9a2c1d4e-7b6f-4e0a-8c15-3d4b5a6f7e02",
+          "url": "https://n8n.example.com/webhook/cmdash",
+          "events": [
+            "risk.created",
+            "risk.updated"
+          ],
+          "isActive": true,
+          "createdAt": "2026-10-01T09:30:00.000Z",
+          "secretRotatedAt": null,
+          "previousSecretExpiresAt": null,
+          "sequenceCounter": 3,
+          "consecutiveFailures": 0,
+          "circuitOpenedAt": null,
+          "circuitOpenReason": null
+        }
+      ]
+    },
+    {
+      "name": "webhooks.create",
+      "request": {
+        "method": "POST",
+        "path": "/v2/webhooks"
+      },
+      "handlerResult": {
+        "id": "0e1f6b46-3a5d-4c3b-9d7a-0c8f6d7e2a01",
+        "url": "https://hooks.zapier.com/hooks/standard/1/abc",
+        "events": [
+          "risk.created"
+        ],
+        "secret": "whsec_00000000000000000000000000000000",
+        "isActive": true,
+        "createdAt": "2026-10-01T09:30:00.000Z"
+      },
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": {
+          "id": "0e1f6b46-3a5d-4c3b-9d7a-0c8f6d7e2a01",
+          "url": "https://hooks.zapier.com/hooks/standard/1/abc",
+          "events": [
+            "risk.created"
+          ],
+          "secret": "whsec_00000000000000000000000000000000",
+          "isActive": true,
+          "createdAt": "2026-10-01T09:30:00.000Z"
+        }
+      },
+      "data": {
+        "id": "0e1f6b46-3a5d-4c3b-9d7a-0c8f6d7e2a01",
+        "url": "https://hooks.zapier.com/hooks/standard/1/abc",
+        "events": [
+          "risk.created"
+        ],
+        "secret": "whsec_00000000000000000000000000000000",
+        "isActive": true,
+        "createdAt": "2026-10-01T09:30:00.000Z"
+      }
+    },
+    {
+      "name": "webhooks.delete",
+      "request": {
+        "method": "DELETE",
+        "path": "/v2/webhooks/0e1f6b46-3a5d-4c3b-9d7a-0c8f6d7e2a01"
+      },
+      "handlerResult": {
+        "deleted": true
+      },
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": {
+          "deleted": true
+        }
+      },
+      "data": {
+        "deleted": true
+      }
+    },
+    {
+      "name": "webhooks.update",
+      "request": {
+        "method": "PUT",
+        "path": "/v2/webhooks/0e1f6b46-3a5d-4c3b-9d7a-0c8f6d7e2a01"
+      },
+      "handlerResult": {
+        "id": "0e1f6b46-3a5d-4c3b-9d7a-0c8f6d7e2a01",
+        "url": "https://hooks.zapier.com/hooks/standard/1/abc",
+        "events": [
+          "risk.created",
+          "risk.updated"
+        ],
+        "isActive": true,
+        "createdAt": "2026-10-01T09:30:00.000Z",
+        "secretRotatedAt": null,
+        "previousSecretExpiresAt": null,
+        "sequenceCounter": 3,
+        "consecutiveFailures": 0,
+        "circuitOpenedAt": null,
+        "circuitOpenReason": null
+      },
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": {
+          "id": "0e1f6b46-3a5d-4c3b-9d7a-0c8f6d7e2a01",
+          "url": "https://hooks.zapier.com/hooks/standard/1/abc",
+          "events": [
+            "risk.created",
+            "risk.updated"
+          ],
+          "isActive": true,
+          "createdAt": "2026-10-01T09:30:00.000Z",
+          "secretRotatedAt": null,
+          "previousSecretExpiresAt": null,
+          "sequenceCounter": 3,
+          "consecutiveFailures": 0,
+          "circuitOpenedAt": null,
+          "circuitOpenReason": null
+        }
+      },
+      "data": {
+        "id": "0e1f6b46-3a5d-4c3b-9d7a-0c8f6d7e2a01",
+        "url": "https://hooks.zapier.com/hooks/standard/1/abc",
+        "events": [
+          "risk.created",
+          "risk.updated"
+        ],
+        "isActive": true,
+        "createdAt": "2026-10-01T09:30:00.000Z",
+        "secretRotatedAt": null,
+        "previousSecretExpiresAt": null,
+        "sequenceCounter": 3,
+        "consecutiveFailures": 0,
+        "circuitOpenedAt": null,
+        "circuitOpenReason": null
+      }
+    },
+    {
+      "name": "compliance.frameworks.list",
+      "request": {
+        "method": "GET",
+        "path": "/v2/compliance/frameworks"
+      },
+      "handlerResult": [
+        {
+          "id": "f1b6c9de-0000-4000-8000-000000000001",
+          "slug": "nist-csf",
+          "name": "NIST CSF",
+          "version": "2.0",
+          "totalControls": 106,
+          "implemented": 40,
+          "inProgress": 10,
+          "notStarted": 55,
+          "notApplicable": 1,
+          "progressPercent": 38
+        }
+      ],
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": [
+          {
+            "id": "f1b6c9de-0000-4000-8000-000000000001",
+            "slug": "nist-csf",
+            "name": "NIST CSF",
+            "version": "2.0",
+            "totalControls": 106,
+            "implemented": 40,
+            "inProgress": 10,
+            "notStarted": 55,
+            "notApplicable": 1,
+            "progressPercent": 38
+          }
+        ]
+      },
+      "data": [
+        {
+          "id": "f1b6c9de-0000-4000-8000-000000000001",
+          "slug": "nist-csf",
+          "name": "NIST CSF",
+          "version": "2.0",
+          "totalControls": 106,
+          "implemented": 40,
+          "inProgress": 10,
+          "notStarted": 55,
+          "notApplicable": 1,
+          "progressPercent": 38
+        }
+      ]
+    },
+    {
+      "name": "compliance.framework.controls",
+      "request": {
+        "method": "GET",
+        "path": "/v2/compliance/frameworks/nist-csf/controls"
+      },
+      "handlerResult": {
+        "framework": {
+          "slug": "nist-csf",
+          "name": "NIST CSF",
+          "version": "2.0"
+        },
+        "controls": [
+          {
+            "controlId": "PR.AC-1",
+            "domain": "Protect",
+            "title": "Identities and credentials are managed",
+            "status": "IMPLEMENTED",
+            "storedStatus": "IMPLEMENTED",
+            "degraded": false,
+            "degradationReason": null,
+            "notes": null
+          }
+        ]
+      },
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": {
+          "framework": {
+            "slug": "nist-csf",
+            "name": "NIST CSF",
+            "version": "2.0"
+          },
+          "controls": [
+            {
+              "controlId": "PR.AC-1",
+              "domain": "Protect",
+              "title": "Identities and credentials are managed",
+              "status": "IMPLEMENTED",
+              "storedStatus": "IMPLEMENTED",
+              "degraded": false,
+              "degradationReason": null,
+              "notes": null
+            }
+          ]
+        }
+      },
+      "data": {
+        "framework": {
+          "slug": "nist-csf",
+          "name": "NIST CSF",
+          "version": "2.0"
+        },
+        "controls": [
+          {
+            "controlId": "PR.AC-1",
+            "domain": "Protect",
+            "title": "Identities and credentials are managed",
+            "status": "IMPLEMENTED",
+            "storedStatus": "IMPLEMENTED",
+            "degraded": false,
+            "degradationReason": null,
+            "notes": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "integrations.list",
+      "request": {
+        "method": "GET",
+        "path": "/v2/integrations"
+      },
+      "handlerResult": [
+        {
+          "id": "7c1d2e3f-0000-4000-8000-000000000002",
+          "provider": "GITHUB",
+          "status": "ACTIVE",
+          "lastSyncAt": "2026-10-09T08:00:00.000Z",
+          "lastSyncStatus": "success",
+          "syncInterval": 14400,
+          "createdAt": "2026-09-01T00:00:00.000Z",
+          "effectiveSyncInterval": 14400
+        }
+      ],
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": [
+          {
+            "id": "7c1d2e3f-0000-4000-8000-000000000002",
+            "provider": "GITHUB",
+            "status": "ACTIVE",
+            "lastSyncAt": "2026-10-09T08:00:00.000Z",
+            "lastSyncStatus": "success",
+            "syncInterval": 14400,
+            "createdAt": "2026-09-01T00:00:00.000Z",
+            "effectiveSyncInterval": 14400
+          }
+        ]
+      },
+      "data": [
+        {
+          "id": "7c1d2e3f-0000-4000-8000-000000000002",
+          "provider": "GITHUB",
+          "status": "ACTIVE",
+          "lastSyncAt": "2026-10-09T08:00:00.000Z",
+          "lastSyncStatus": "success",
+          "syncInterval": 14400,
+          "createdAt": "2026-09-01T00:00:00.000Z",
+          "effectiveSyncInterval": 14400
+        }
+      ]
+    },
+    {
+      "name": "risks.list",
+      "request": {
+        "method": "GET",
+        "path": "/v2/risks"
+      },
+      "handlerResult": {
+        "total": 1,
+        "risks": [
+          {
+            "id": "5b6d3c1e-0a53-4d8f-9a55-6f0d3d1d8a11",
+            "riskId": "RISK-0001",
+            "title": "Unpatched critical vulnerabilities in production",
+            "description": null,
+            "category": "Vulnerability Management",
+            "likelihood": 4,
+            "impact": 5,
+            "riskScore": 20,
+            "status": "OPEN",
+            "dueDate": null,
+            "createdAt": "2026-10-01T09:30:00.000Z",
+            "updatedAt": "2026-10-01T09:30:00.000Z",
+            "controls": []
+          }
+        ]
+      },
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": {
+          "total": 1,
+          "risks": [
+            {
+              "id": "5b6d3c1e-0a53-4d8f-9a55-6f0d3d1d8a11",
+              "riskId": "RISK-0001",
+              "title": "Unpatched critical vulnerabilities in production",
+              "description": null,
+              "category": "Vulnerability Management",
+              "likelihood": 4,
+              "impact": 5,
+              "riskScore": 20,
+              "status": "OPEN",
+              "dueDate": null,
+              "createdAt": "2026-10-01T09:30:00.000Z",
+              "updatedAt": "2026-10-01T09:30:00.000Z",
+              "controls": []
+            }
+          ]
+        }
+      },
+      "data": {
+        "total": 1,
+        "risks": [
+          {
+            "id": "5b6d3c1e-0a53-4d8f-9a55-6f0d3d1d8a11",
+            "riskId": "RISK-0001",
+            "title": "Unpatched critical vulnerabilities in production",
+            "description": null,
+            "category": "Vulnerability Management",
+            "likelihood": 4,
+            "impact": 5,
+            "riskScore": 20,
+            "status": "OPEN",
+            "dueDate": null,
+            "createdAt": "2026-10-01T09:30:00.000Z",
+            "updatedAt": "2026-10-01T09:30:00.000Z",
+            "controls": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "risks.create",
+      "request": {
+        "method": "POST",
+        "path": "/v2/risks"
+      },
+      "handlerResult": {
+        "id": "5b6d3c1e-0a53-4d8f-9a55-6f0d3d1d8a11",
+        "riskId": "RISK-0001",
+        "title": "Unpatched critical vulnerabilities in production",
+        "description": null,
+        "category": "Vulnerability Management",
+        "likelihood": 4,
+        "impact": 5,
+        "riskScore": 20,
+        "status": "OPEN",
+        "dueDate": null,
+        "createdAt": "2026-10-01T09:30:00.000Z",
+        "updatedAt": "2026-10-01T09:30:00.000Z",
+        "controls": []
+      },
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": {
+          "id": "5b6d3c1e-0a53-4d8f-9a55-6f0d3d1d8a11",
+          "riskId": "RISK-0001",
+          "title": "Unpatched critical vulnerabilities in production",
+          "description": null,
+          "category": "Vulnerability Management",
+          "likelihood": 4,
+          "impact": 5,
+          "riskScore": 20,
+          "status": "OPEN",
+          "dueDate": null,
+          "createdAt": "2026-10-01T09:30:00.000Z",
+          "updatedAt": "2026-10-01T09:30:00.000Z",
+          "controls": []
+        }
+      },
+      "data": {
+        "id": "5b6d3c1e-0a53-4d8f-9a55-6f0d3d1d8a11",
+        "riskId": "RISK-0001",
+        "title": "Unpatched critical vulnerabilities in production",
+        "description": null,
+        "category": "Vulnerability Management",
+        "likelihood": 4,
+        "impact": 5,
+        "riskScore": 20,
+        "status": "OPEN",
+        "dueDate": null,
+        "createdAt": "2026-10-01T09:30:00.000Z",
+        "updatedAt": "2026-10-01T09:30:00.000Z",
+        "controls": []
+      }
+    },
+    {
+      "name": "posture.history",
+      "request": {
+        "method": "GET",
+        "path": "/v2/posture/history"
+      },
+      "handlerResult": [
+        {
+          "date": "2026-10-08",
+          "score": 71
+        },
+        {
+          "date": "2026-10-09",
+          "score": 73
+        }
+      ],
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": [
+          {
+            "date": "2026-10-08",
+            "score": 71
+          },
+          {
+            "date": "2026-10-09",
+            "score": 73
+          }
+        ]
+      },
+      "data": [
+        {
+          "date": "2026-10-08",
+          "score": 71
+        },
+        {
+          "date": "2026-10-09",
+          "score": 73
+        }
+      ]
+    },
+    {
+      "name": "collector.definitions",
+      "request": {
+        "method": "GET",
+        "path": "/v2/collector/definitions"
+      },
+      "handlerResult": {
+        "definitions": [
+          {
+            "id": "cc-1",
+            "name": "Internal patch API",
+            "endpointUrl": "https://internal.corp.local/api/patches",
+            "httpMethod": "GET",
+            "requestHeaders": null,
+            "requestBody": null,
+            "authType": "NONE",
+            "fieldMappings": [
+              {
+                "jsonPath": "$.data.compliant",
+                "targetField": "compliant",
+                "target": "OBSERVATION"
+              }
+            ]
+          }
+        ]
+      },
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": {
+          "definitions": [
+            {
+              "id": "cc-1",
+              "name": "Internal patch API",
+              "endpointUrl": "https://internal.corp.local/api/patches",
+              "httpMethod": "GET",
+              "requestHeaders": null,
+              "requestBody": null,
+              "authType": "NONE",
+              "fieldMappings": [
+                {
+                  "jsonPath": "$.data.compliant",
+                  "targetField": "compliant",
+                  "target": "OBSERVATION"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "data": {
+        "definitions": [
+          {
+            "id": "cc-1",
+            "name": "Internal patch API",
+            "endpointUrl": "https://internal.corp.local/api/patches",
+            "httpMethod": "GET",
+            "requestHeaders": null,
+            "requestBody": null,
+            "authType": "NONE",
+            "fieldMappings": [
+              {
+                "jsonPath": "$.data.compliant",
+                "targetField": "compliant",
+                "target": "OBSERVATION"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "collector.definitions.none",
+      "request": {
+        "method": "GET",
+        "path": "/v2/collector/definitions?connectorId=none"
+      },
+      "handlerResult": {
+        "definitions": []
+      },
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": {
+          "definitions": []
+        }
+      },
+      "data": {
+        "definitions": []
+      }
+    },
+    {
+      "name": "collector.keys.register",
+      "request": {
+        "method": "POST",
+        "path": "/v2/collector/keys"
+      },
+      "handlerResult": {
+        "collectorKeyId": "cmdash-collector-0123456789abcdef",
+        "deployment": "https://app.cmdash.example",
+        "tenantRef": "tr_0123456789abcdef0123456789abcdef"
+      },
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": {
+          "collectorKeyId": "cmdash-collector-0123456789abcdef",
+          "deployment": "https://app.cmdash.example",
+          "tenantRef": "tr_0123456789abcdef0123456789abcdef"
+        }
+      },
+      "data": {
+        "collectorKeyId": "cmdash-collector-0123456789abcdef",
+        "deployment": "https://app.cmdash.example",
+        "tenantRef": "tr_0123456789abcdef0123456789abcdef"
+      }
+    },
+    {
+      "name": "collector.push",
+      "request": {
+        "method": "POST",
+        "path": "/v2/collector/push"
+      },
+      "handlerResult": {
+        "ingested": 1,
+        "enrollmentId": "enr-1",
+        "signatureVersion": 2,
+        "attestedMeasurements": 0
+      },
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": {
+          "ingested": 1,
+          "enrollmentId": "enr-1",
+          "signatureVersion": 2,
+          "attestedMeasurements": 0
+        }
+      },
+      "data": {
+        "ingested": 1,
+        "enrollmentId": "enr-1",
+        "signatureVersion": 2,
+        "attestedMeasurements": 0
+      }
+    },
+    {
+      "name": "gate.evaluate",
+      "request": {
+        "method": "POST",
+        "path": "/v2/gate/evaluate"
+      },
+      "handlerResult": {
+        "pass": false,
+        "evaluatedAt": "2026-10-09T12:00:00.000Z",
+        "policy": {
+          "scoreDropThreshold": 5,
+          "blockOnControlRegression": true,
+          "controlRegressionWindowDays": 7,
+          "blockOnExpiredException": true,
+          "updatedAt": null
+        },
+        "summary": {
+          "modelsChecked": [
+            "nist-csf"
+          ],
+          "controlRegressionsFound": 1,
+          "expiredExceptionsFound": 0
+        },
+        "failures": [
+          {
+            "type": "CONTROL_REGRESSION",
+            "controlAssessmentId": "3f9a1c52-0000-4000-8000-000000000003",
+            "controlId": "PR.AC-1",
+            "frameworkSlug": "nist-csf",
+            "fromStatus": "IMPLEMENTED",
+            "toStatus": "IN_PROGRESS",
+            "changedAt": "2026-10-08T10:00:00.000Z",
+            "reason": "Control PR.AC-1 (nist-csf) moved from IMPLEMENTED to IN_PROGRESS on 2026-10-08"
+          }
+        ]
+      },
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": {
+          "pass": false,
+          "evaluatedAt": "2026-10-09T12:00:00.000Z",
+          "policy": {
+            "scoreDropThreshold": 5,
+            "blockOnControlRegression": true,
+            "controlRegressionWindowDays": 7,
+            "blockOnExpiredException": true,
+            "updatedAt": null
+          },
+          "summary": {
+            "modelsChecked": [
+              "nist-csf"
+            ],
+            "controlRegressionsFound": 1,
+            "expiredExceptionsFound": 0
+          },
+          "failures": [
+            {
+              "type": "CONTROL_REGRESSION",
+              "controlAssessmentId": "3f9a1c52-0000-4000-8000-000000000003",
+              "controlId": "PR.AC-1",
+              "frameworkSlug": "nist-csf",
+              "fromStatus": "IMPLEMENTED",
+              "toStatus": "IN_PROGRESS",
+              "changedAt": "2026-10-08T10:00:00.000Z",
+              "reason": "Control PR.AC-1 (nist-csf) moved from IMPLEMENTED to IN_PROGRESS on 2026-10-08"
+            }
+          ]
+        }
+      },
+      "data": {
+        "pass": false,
+        "evaluatedAt": "2026-10-09T12:00:00.000Z",
+        "policy": {
+          "scoreDropThreshold": 5,
+          "blockOnControlRegression": true,
+          "controlRegressionWindowDays": 7,
+          "blockOnExpiredException": true,
+          "updatedAt": null
+        },
+        "summary": {
+          "modelsChecked": [
+            "nist-csf"
+          ],
+          "controlRegressionsFound": 1,
+          "expiredExceptionsFound": 0
+        },
+        "failures": [
+          {
+            "type": "CONTROL_REGRESSION",
+            "controlAssessmentId": "3f9a1c52-0000-4000-8000-000000000003",
+            "controlId": "PR.AC-1",
+            "frameworkSlug": "nist-csf",
+            "fromStatus": "IMPLEMENTED",
+            "toStatus": "IN_PROGRESS",
+            "changedAt": "2026-10-08T10:00:00.000Z",
+            "reason": "Control PR.AC-1 (nist-csf) moved from IMPLEMENTED to IN_PROGRESS on 2026-10-08"
+          }
+        ]
+      }
+    },
+    {
+      "name": "void handler",
+      "request": {
+        "method": "POST",
+        "path": "/__fixture/void"
+      },
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z"
+      }
+    },
+    {
+      "name": "null handler",
+      "request": {
+        "method": "GET",
+        "path": "/__fixture/null"
+      },
+      "handlerResult": null,
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": null
+      },
+      "data": null
+    },
+    {
+      "name": "capped list carries meta",
+      "request": {
+        "method": "GET",
+        "path": "/__fixture/capped"
+      },
+      "cap": 2,
+      "rawRows": [
+        {
+          "id": "row-1"
+        },
+        {
+          "id": "row-2"
+        },
+        {
+          "id": "row-3"
+        }
+      ],
+      "wire": {
+        "success": true,
+        "requestId": "req-contract-fixture-0001",
+        "timestamp": "2026-10-09T12:00:00.000Z",
+        "data": [
+          {
+            "id": "row-1"
+          },
+          {
+            "id": "row-2"
+          }
+        ],
+        "meta": {
+          "lists": [
+            {
+              "surface": "fixture.rows",
+              "cap": 2,
+              "returned": 2,
+              "hasMore": true,
+              "totalCount": null
+            }
+          ],
+          "hasMore": true,
+          "totalCount": null,
+          "returned": 2
+        }
+      },
+      "data": [
+        {
+          "id": "row-1"
+        },
+        {
+          "id": "row-2"
+        }
+      ]
+    }
+  ]
+}

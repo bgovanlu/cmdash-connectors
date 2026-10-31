@@ -1,0 +1,21 @@
+{
+  "endpointUrl": "https://api.example.com/v1/status",
+  "httpMethod": "GET",
+  "requestHeaders": {
+    "X-Api-Key": "sk_live_hardcoded_secret_do_not_do_this"
+  },
+  "authType": "NONE",
+  "fieldMappings": [
+    {
+      "jsonPath": "$..controls[?(@.state=='fail')]",
+      "targetField": "controlState",
+      "target": "OBSERVATION",
+      "observationType": "NOT_A_REAL_OBSERVATION_TYPE"
+    },
+    {
+      "jsonPath": "$.data.lastAuditReportUrl",
+      "targetField": "controlState",
+      "target": "EVIDENCE"
+    }
+  ]
+}

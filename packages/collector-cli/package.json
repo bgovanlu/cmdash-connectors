@@ -1,0 +1,43 @@
+{
+  "name": "@cmdash/collector-cli",
+  "version": "0.2.0",
+  "description": "One-shot collector that runs CMDash connector definitions inside your own network and pushes the results back.",
+  "author": "CMDash <support@cmdash.com>",
+  "keywords": ["cmdash", "grc", "compliance", "security", "cli", "collector", "connector"],
+  "homepage": "https://github.com/bgovanlu/cmdash/tree/main/packages/collector-cli#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "github:bgovanlu/cmdash",
+    "directory": "packages/collector-cli"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "bin": {
+    "cmdash-collector": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:ci": "vitest run --config vitest.coverage.config.ts --coverage --reporter=default --reporter=junit --outputFile=test-results.xml",
+    "test:coverage": "vitest run --config vitest.coverage.config.ts --coverage",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@cmdash/connector-runtime": "*"
+  }
+}

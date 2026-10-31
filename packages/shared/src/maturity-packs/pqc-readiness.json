@@ -1,0 +1,269 @@
+{
+  "packFormatVersion": 1,
+  "model": {
+    "slug": "pqc-readiness",
+    "name": "Post-Quantum Cryptography Readiness",
+    "version": "1.0",
+    "description": "cmdash-authored maturity model for an organization's migration to post-quantum cryptography (GitHub #959, docs/plans/quantum-resilience-design-2026-10.md section 5 and slice B-S2). Seven dimensions follow the programme a customer works through: own it (governance), record where cryptography protects data (inventory), classify and prioritise by how long the protected data must stay confidential (risk prioritisation), ask suppliers for their plans (suppliers), keep algorithms replaceable (crypto-agility), move to the NIST post-quantum standards (migration execution) and prove the change took effect (validation). The ladder describes the organization's own practice; it is not a certification and no framework requires post-quantum cryptography by name today. The NIST CSF 2.0, CMMC Level 2 and ISO/IEC 27001:2022 controls mapped below are the existing requirements a post-quantum programme produces evidence for, an editorial crosswalk rather than a published one. Sources the levels draw on: NIST FIPS 203, 204 and 205 (the post-quantum standards, August 2024), NIST IR 8547 (Transition to Post-Quantum Cryptography Standards, October 2026: quantum-vulnerable public-key algorithms deprecated after 2030 and disallowed under NIST standards after 2035), NSA's Commercial National Security Algorithm Suite 2.0 and the CISA, NSA and NIST joint fact sheet Quantum-Readiness: Migration to Post-Quantum Cryptography (August 2023).",
+    "minOrdinal": 1,
+    "maxOrdinal": 4,
+    "provenance": {
+      "publisher": "cmdash",
+      "sourceDoc": "docs/plans/quantum-resilience-design-2026-10.md section 5 (the programme), drawing on NIST FIPS 203/204/205, NIST IR 8547, NSA CNSA 2.0 and the CISA/NSA/NIST Quantum-Readiness fact sheet",
+      "sourceUrl": "https://csrc.nist.gov/pubs/ir/8547/final",
+      "license": "cmdash proprietary - internal maturity content pack; the cited NIST, NSA and CISA sources are US Government works"
+    }
+  },
+  "levels": [
+    {
+      "ordinal": 1,
+      "key": "initial",
+      "name": "Initial",
+      "description": "Post-quantum work is informal. Nobody owns it, there is no list of where cryptography is used, and algorithm choices are whatever each product or team shipped with."
+    },
+    {
+      "ordinal": 2,
+      "key": "defined",
+      "name": "Defined",
+      "description": "An owner and a written target state exist, the main systems that use public-key cryptography are recorded, and the quantum-vulnerable ones (RSA, elliptic-curve and finite-field Diffie-Hellman, ECDSA, EdDSA) are marked. Work is planned but mostly not started."
+    },
+    {
+      "ordinal": 3,
+      "key": "managed",
+      "name": "Managed",
+      "description": "The inventory is complete and kept current, systems are prioritised by how long their data must stay confidential, suppliers have been asked for their plans, and the highest-priority systems are moving to hybrid or post-quantum key establishment."
+    },
+    {
+      "ordinal": 4,
+      "key": "optimized",
+      "name": "Optimized",
+      "description": "Cryptography is replaceable by configuration, new systems are bought and built with the NIST post-quantum standards, migrated systems are verified by test rather than by assertion, and the programme tracks the published deprecation dates as a routine part of risk management."
+    }
+  ],
+  "dimensions": [
+    {
+      "key": "governance",
+      "name": "Governance and ownership",
+      "description": "Whether the migration has a named owner, a target state, a policy section on post-quantum cryptography and a place in the risk register, and whether the external timelines that apply to the organization (NIST IR 8547, CNSA 2.0 for National Security Systems, contract requirements) are tracked.",
+      "domain": "Govern",
+      "weight": 1,
+      "sortOrder": 0,
+      "levelDescriptors": {
+        "initial": "No owner and no written position on post-quantum cryptography.",
+        "defined": "An owner is named and a target state is written into the cryptography policy.",
+        "managed": "The programme reports progress to leadership and tracks the timelines that apply to the organization.",
+        "optimized": "The programme is reviewed on a fixed cadence and its targets are revised when the published timelines change."
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.OC-03",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "iso-27001",
+          "controlKey": "A.5.31",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "inventory",
+      "name": "Cryptographic inventory",
+      "description": "Whether the organization knows where cryptography protects its data: TLS endpoints, VPNs, SSH, certificates and certificate authorities, code signing, encryption at rest, cryptographic libraries, HSM and KMS keys, and the cryptography inside supplier services.",
+      "domain": "Identify",
+      "weight": 1.2,
+      "sortOrder": 1,
+      "levelDescriptors": {
+        "initial": "No inventory of cryptographic use.",
+        "defined": "The main systems that use public-key cryptography are recorded.",
+        "managed": "The inventory covers endpoints, certificates, keys, libraries and supplier services, and is updated when systems change.",
+        "optimized": "The inventory is fed automatically from scanning and asset data and reconciled on a fixed cadence."
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.AM-02",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.AM-07",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.AM-08",
+          "weight": 0.5
+        },
+        {
+          "frameworkSlug": "cmmc-l2",
+          "controlKey": "CM.L2-3.4.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "iso-27001",
+          "controlKey": "A.5.9",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "iso-27001",
+          "controlKey": "A.8.9",
+          "weight": 0.5
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "risk-prioritisation",
+      "name": "Risk classification and prioritisation",
+      "description": "Whether each inventoried use is classified as quantum-vulnerable (RSA, elliptic-curve and finite-field Diffie-Hellman, ECDSA, EdDSA), weakened (128-bit symmetric keys) or resistant (AES-256, SHA-384 and above, ML-KEM, ML-DSA, SLH-DSA, LMS and XMSS), and prioritised by how long the protected data must stay confidential, so long-lived data on vulnerable key exchange (the harvest-now-decrypt-later risk) moves first. The organization sets its own threat horizon.",
+      "domain": "Identify",
+      "weight": 1,
+      "sortOrder": 2,
+      "levelDescriptors": {
+        "initial": "Quantum risk is not part of risk assessment.",
+        "defined": "Quantum-vulnerable uses are marked in the inventory.",
+        "managed": "Each use carries a confidentiality lifetime and a migration priority, and long-lived data on vulnerable key exchange is first in line.",
+        "optimized": "Priorities are re-assessed when the inventory, the data's lifetime or the published timelines change."
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.RA-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cmmc-l2",
+          "controlKey": "RA.L2-3.11.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "iso-27001",
+          "controlKey": "A.5.7",
+          "weight": 0.5
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "suppliers",
+      "name": "Supplier readiness",
+      "description": "Whether suppliers whose products or services protect the organization's data have been asked for their post-quantum plan and current key-exchange posture, and whether new contracts carry a requirement to support the NIST post-quantum standards.",
+      "domain": "Govern",
+      "weight": 1,
+      "sortOrder": 3,
+      "levelDescriptors": {
+        "initial": "Suppliers are not asked about post-quantum cryptography.",
+        "defined": "Critical suppliers have been asked for their post-quantum plans.",
+        "managed": "Supplier answers are recorded and reviewed, and gaps are tracked as supplier risks.",
+        "optimized": "Procurement requires support for the NIST post-quantum standards and supplier answers are re-checked on renewal."
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.SC-05",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "iso-27001",
+          "controlKey": "A.5.21",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "crypto-agility",
+      "name": "Crypto-agility",
+      "description": "Whether algorithms and key sizes can be changed by configuration rather than by rewriting systems, whether hybrid key exchange is preferred where it is offered, and whether FIPS-validated modules are kept where they are required (CMMC 3.13.11 requires FIPS-validated cryptography to protect CUI).",
+      "domain": "Protect",
+      "weight": 1,
+      "sortOrder": 4,
+      "levelDescriptors": {
+        "initial": "Algorithms are fixed in code and products.",
+        "defined": "Hard-coded algorithm choices are identified.",
+        "managed": "New and changed systems take algorithms from configuration and prefer hybrid key exchange where offered.",
+        "optimized": "Algorithm changes are routine, tested changes, and FIPS validation status is tracked for every module that needs it."
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "iso-27001",
+          "controlKey": "A.8.24",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cmmc-l2",
+          "controlKey": "SC.L2-3.13.11",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.DS-10",
+          "weight": 0.5
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "migration-execution",
+      "name": "Migration execution",
+      "description": "Whether prioritised systems are actually moving to ML-KEM for key establishment and to ML-DSA, SLH-DSA or stateful hash-based signatures for signing, starting with hybrid key exchange where both ends support it, and whether systems that cannot migrate are scheduled for replacement.",
+      "domain": "Protect",
+      "weight": 1.2,
+      "sortOrder": 5,
+      "levelDescriptors": {
+        "initial": "No migration work has started.",
+        "defined": "A migration plan names the first systems and their target algorithms.",
+        "managed": "The highest-priority systems use hybrid or post-quantum key establishment, and systems that cannot migrate have a replacement date.",
+        "optimized": "Key establishment and signatures on prioritised systems use the NIST post-quantum standards, and quantum-vulnerable algorithms are being retired on a schedule."
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.DS-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.DS-02",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cmmc-l2",
+          "controlKey": "SC.L2-3.13.8",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "validation",
+      "name": "Validation",
+      "description": "Whether the result of a migration is checked by test, for example a handshake that confirms a public endpoint negotiates hybrid post-quantum key exchange or a signature that verifies under the new algorithm, rather than recorded as done because the change was made.",
+      "domain": "Detect",
+      "weight": 0.8,
+      "sortOrder": 6,
+      "levelDescriptors": {
+        "initial": "Migrations are not checked.",
+        "defined": "Migrated systems are checked once, by hand.",
+        "managed": "Migrated endpoints are checked by repeatable tests and failures reopen the migration item.",
+        "optimized": "Checks run continuously and a regression to a quantum-vulnerable algorithm raises an alert."
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.IM-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.DS-02",
+          "weight": 0.5
+        }
+      ],
+      "previousKeys": []
+    }
+  ]
+}

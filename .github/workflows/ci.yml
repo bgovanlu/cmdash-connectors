@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: 22
+      - name: Install
+        run: npm install --no-audit --no-fund
+      - name: Build connector-runtime
+        run: npm run build --workspace packages/connector-runtime
+      - name: Typecheck
+        run: npm run typecheck --workspace packages/connector-runtime && npm run typecheck --workspace packages/collector-cli
+      - name: Test
+        run: npm test --workspace packages/connector-runtime && npm test --workspace packages/collector-cli
+      - name: Conformance kit
+        run: node docs/developers/connector-conformance-kit/validate.mjs docs/developers/connector-conformance-kit/examples/valid-example.json

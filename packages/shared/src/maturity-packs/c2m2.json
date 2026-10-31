@@ -1,0 +1,315 @@
+{
+  "packFormatVersion": 1,
+  "model": {
+    "slug": "c2m2",
+    "name": "Cybersecurity Capability Maturity Model (C2M2)",
+    "version": "2.1",
+    "description": "DOE's C2M2 v2.1 (June 2022) — 10 domains, each scored on a 4-level Maturity Indicator Level (MIL0-MIL3) ladder that is shared across every domain. C2M2 does not publish an official crosswalk to other frameworks; controlMappings below are authored by domain-name proximity to the built-in NIST CSF 2.0 framework (the crosswalk hub) and, for Identity/Access and Workforce, CMMC Level 2 — see each dimension's description for the specific rationale.",
+    "minOrdinal": 0,
+    "maxOrdinal": 3,
+    "provenance": {
+      "publisher": "U.S. Department of Energy",
+      "sourceDoc": "C2M2 v2.1 (June 2022)",
+      "sourceUrl": "https://c2m2.doe.gov",
+      "license": "public-domain"
+    }
+  },
+  "levels": [
+    {
+      "ordinal": 0,
+      "key": "mil0",
+      "name": "MIL0: Incomplete",
+      "description": "MIL1 has not been achieved in the domain — none of the domain's MIL1 practices are performed."
+    },
+    {
+      "ordinal": 1,
+      "key": "mil1",
+      "name": "MIL1: Initiated",
+      "description": "Initial practices are performed but may be ad hoc. Practices are performed in a manner that depends largely on the initiative and experience of an individual or team (and team leadership), without much in the way of a prescribed plan, policy, or training."
+    },
+    {
+      "ordinal": 2,
+      "key": "mil2",
+      "name": "MIL2: Performed",
+      "description": "Practices are more complete or advanced than at MIL1. Practices are documented. Adequate resources are provided to support performance of the practices in the domain (people, funding, and tools)."
+    },
+    {
+      "ordinal": 3,
+      "key": "mil3",
+      "name": "MIL3: Managed",
+      "description": "Practices are more complete or advanced than at MIL2. Activities are guided by policies (or other organizational directives). Responsibility, accountability, and authority for performance of the practices in the domain are assigned to personnel. Personnel performing the practices in the domain have adequate skills and knowledge. The effectiveness of activities is evaluated and tracked."
+    }
+  ],
+  "dimensions": [
+    {
+      "key": "asset",
+      "name": "Asset, Change, and Configuration Management",
+      "description": "Manage the organization's IT and OT assets, including both hardware and software, and information assets commensurate with the risk to critical infrastructure and organizational objectives. C2M2 publishes no official crosswalk; mapped by domain-name proximity to NIST CSF 2.0's Identify > Asset Management (ID.AM) category and Protect > Platform Security configuration-management practice (PR.PS-01).",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 0,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.AM-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.AM-02",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.PS-01",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "threat",
+      "name": "Threat and Vulnerability Management",
+      "description": "Establish and maintain plans, procedures, and technologies to detect, identify, analyze, manage, and respond to cybersecurity threats and vulnerabilities, commensurate with the risk to the organization's infrastructure (such as critical, IT, and operational) and organizational objectives. Mapped by domain-name proximity to NIST CSF 2.0's Identify > Risk Assessment (ID.RA) vulnerability-management practices and Detect > Adverse Event Analysis threat-intel integration (DE.AE-07); no official C2M2-to-framework crosswalk is published by DOE.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 1,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.RA-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.RA-08",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "DE.AE-07",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "risk",
+      "name": "Risk Management",
+      "description": "Establish, operate, and maintain an enterprise cyber risk management program to identify, analyze, and respond to cyber risk the organization is subject to, including its business units, subsidiaries, related interconnected infrastructure, and stakeholders. Mapped by domain-name proximity to NIST CSF 2.0's Govern > Risk Management Strategy (GV.RM) category; no official C2M2-to-framework crosswalk is published by DOE.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 2,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.RM-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.RM-02",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.RM-06",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "access",
+      "name": "Identity and Access Management",
+      "description": "Create and manage identities for entities that may be granted logical or physical access to the organization's assets. Control access to the organization's assets, commensurate with the risk to critical infrastructure and organizational objectives. Mapped by domain-name proximity to NIST CSF 2.0's Protect > Identity Management, Authentication, and Access Control (PR.AA) category, plus CMMC Level 2's Access Control family (AC.L2-3.1.1) as a secondary reference; no official C2M2-to-framework crosswalk is published by DOE, and no differential weighting is applied since neither source standard assigns one.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 3,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.AA-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.AA-03",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.AA-05",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cmmc-l2",
+          "controlKey": "AC.L2-3.1.1",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "situation",
+      "name": "Situational Awareness",
+      "description": "Establish and maintain activities and technologies to collect, monitor, analyze, alarm, report, and use operational, security, and threat information, including status and summary information from the other model domains, to establish situational awareness for both the organization's operational state and cybersecurity state. Mapped by domain-name proximity to NIST CSF 2.0's Detect > Continuous Monitoring (DE.CM) and Adverse Event Analysis (DE.AE) categories; no official C2M2-to-framework crosswalk is published by DOE.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 4,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "DE.CM-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "DE.AE-02",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "DE.AE-03",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "response",
+      "name": "Event and Incident Response, Continuity of Operations",
+      "description": "Establish and maintain plans, procedures, and technologies to detect, analyze, mitigate, respond to, and recover from cybersecurity events and incidents and to sustain operations during cybersecurity incidents, commensurate with the risk to critical infrastructure and organizational objectives. Mapped by domain-name proximity to NIST CSF 2.0's Respond (RS.MA incident management, RS.MI mitigation) and Recover (RC.RP recovery plan execution) functions, which together cover this domain's combined incident-response-and-continuity scope; no official C2M2-to-framework crosswalk is published by DOE.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 5,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RS.MA-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RS.MI-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RC.RP-01",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "third-parties",
+      "name": "Third-Party Risk Management",
+      "description": "Establish and maintain controls to manage the cyber risks arising from suppliers and other third parties, commensurate with the risk to critical infrastructure and organizational objectives. Mapped by domain-name proximity to NIST CSF 2.0's Govern > Cybersecurity Supply Chain Risk Management (GV.SC) category; no official C2M2-to-framework crosswalk is published by DOE.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 6,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.SC-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.SC-06",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.SC-07",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "workforce",
+      "name": "Workforce Management",
+      "description": "Establish and maintain plans, procedures, technologies, and controls to create a culture of cybersecurity and to ensure the ongoing suitability and competence of personnel, commensurate with the risk to critical infrastructure and organizational objectives. Mapped by domain-name proximity to NIST CSF 2.0's Protect > Awareness and Training (PR.AT-01) practice and Govern > Roles/Responsibilities HR-integration practice (GV.RR-04), plus CMMC Level 2's Awareness & Training family (AT.L2-3.2.1) as a secondary reference; no official C2M2-to-framework crosswalk is published by DOE, and no differential weighting is applied since neither source standard assigns one.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 7,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.AT-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.RR-04",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cmmc-l2",
+          "controlKey": "AT.L2-3.2.1",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "architecture",
+      "name": "Cybersecurity Architecture",
+      "description": "Establish and maintain the structure and behavior of the organization's cybersecurity architecture, including controls, processes, technologies, and other elements, commensurate with the risk to critical infrastructure and organizational objectives. NIST CSF 2.0 has no dedicated architecture category; mapped by domain-name proximity to the closest available category, Protect > Technology Infrastructure Resilience (PR.IR), which covers network/environment protection and resilience-by-design — a partial, not exact, proxy. No official C2M2-to-framework crosswalk is published by DOE.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 8,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.IR-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.IR-03",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "program",
+      "name": "Cybersecurity Program Management",
+      "description": "Establish and maintain an enterprise cybersecurity program that provides governance, strategic planning, and sponsorship for the organization's cybersecurity activities in a manner that aligns cybersecurity objectives with both the organization's strategic objectives and the risk to critical infrastructure. Mapped by domain-name proximity to NIST CSF 2.0's Govern > Oversight (GV.OV) and Policy (GV.PO-01) categories; no official C2M2-to-framework crosswalk is published by DOE.",
+      "domain": null,
+      "weight": 1,
+      "sortOrder": 9,
+      "levelDescriptors": null,
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.OV-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.OV-03",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.PO-01",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    }
+  ]
+}

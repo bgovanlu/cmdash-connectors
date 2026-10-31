@@ -1,0 +1,19 @@
+// ROADMAP-V70 E46 note: this package is single-build (CJS only) ON PURPOSE —
+// do not add a tsconfig.esm.json / `dist/esm/` the way packages/shared has
+// one. Its only consumers are apps/api (NestJS, plain `require`) and
+// packages/collector-cli (a CLI run with plain `node`), both real Node/CJS
+// contexts with no bundler that would need an ESM build to tree-shake — the
+// reason packages/shared has a second, ESM build. A dual build here would
+// buy nothing and would import the exact staleness-trap class E46 exists to
+// close on packages/shared; see scripts/check-dual-build-parity.mjs, whose
+// discovery logic would start covering this package automatically if a
+// `require`+`import` exports condition pair were ever added.
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts"]
+}

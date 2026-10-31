@@ -1,0 +1,376 @@
+{
+  "packFormatVersion": 1,
+  "model": {
+    "slug": "cisa-ztmm",
+    "name": "CISA Zero Trust Maturity Model 2.0",
+    "version": "2.0",
+    "description": "CISA's five-pillar (Identity, Devices, Networks, Applications & Workloads, Data) plus three cross-cutting capabilities (Visibility & Analytics, Automation & Orchestration, Governance) model, with each pillar/capability progressing Traditional -> Initial -> Advanced -> Optimal. CISA publishes per-function tables (multiple named functions per pillar, e.g. Authentication/Identity Stores/Risk Assessments/Access Management for Identity) rather than one paragraph per pillar per stage; this pack models one dimension per pillar/capability (per docs/design/maturity-engine.md's ordinal-ladder-per-dimension shape) and surfaces one representative function's stage language per pillar in levelDescriptors (noted per-dimension below) rather than flattening every function into the dimension description. ZTMM is not itself a seeded crosswalk framework in this codebase, so controlMappings point at nist-csf-2 and cis-controls as an honest indirect proxy (informative, not an official CISA crosswalk) -- see per-dimension descriptions for the specific indirection.",
+    "minOrdinal": 1,
+    "maxOrdinal": 4,
+    "provenance": {
+      "publisher": "CISA",
+      "sourceDoc": "Zero Trust Maturity Model Version 2.0 (April 2023)",
+      "sourceUrl": "https://www.cisa.gov/zero-trust-maturity-model",
+      "license": "public-domain"
+    }
+  },
+  "levels": [
+    {
+      "ordinal": 1,
+      "key": "traditional",
+      "name": "Traditional",
+      "description": "Manually configured lifecycles (from establishment to decommissioning) and assignments of attributes (security and logging); static security policies and solutions that address one pillar at a time with discrete dependencies on external systems; least privilege established only at provisioning; siloed pillars of policy enforcement; manual response and mitigation deployment; and limited correlation of dependencies, logs, and telemetry. (CISA ZTMM v2.0 p.9, guiding criteria.)"
+    },
+    {
+      "ordinal": 2,
+      "key": "initial",
+      "name": "Initial",
+      "description": "Starting automation of attribute assignment and configuration of lifecycles, policy decisions and enforcement, and initial cross-pillar solutions with integration of external systems; some responsive changes to least privilege after provisioning; and aggregated visibility for internal systems. (CISA ZTMM v2.0 p.9, guiding criteria.)"
+    },
+    {
+      "ordinal": 3,
+      "key": "advanced",
+      "name": "Advanced",
+      "description": "Wherever applicable, automated controls for lifecycle and assignment of configurations and policies with cross-pillar coordination; centralized visibility and identity control; policy enforcement integrated across pillars; response to pre-defined mitigations; changes to least privilege based on risk and posture assessments; and building toward enterprise-wide awareness (including externally hosted resources). (CISA ZTMM v2.0 p.9, guiding criteria.)"
+    },
+    {
+      "ordinal": 4,
+      "key": "optimal",
+      "name": "Optimal",
+      "description": "Fully automated, just-in-time lifecycles and assignments of attributes to assets and resources that self-report with dynamic policies based on automated/observed triggers; dynamic least privilege access (just-enough and within thresholds) for assets and their respective dependencies enterprise-wide; cross-pillar interoperability with continuous monitoring; and centralized visibility with comprehensive situational awareness. (CISA ZTMM v2.0 p.9, guiding criteria.)"
+    }
+  ],
+  "dimensions": [
+    {
+      "key": "identity",
+      "name": "Identity",
+      "description": "\"An identity refers to an attribute or set of attributes that uniquely describes an agency user or entity, including non-person entities.\" (CISA ZTMM v2.0 Section 5.1, p.13, quoted verbatim.) The pillar covers authentication, identity stores, risk assessments, and access management (Table 2). controlMappings map to nist-csf-2 PR.AA-* (Identity Management, Authentication, and Access Control) and CIS Controls v8 Control 5/6 (Account Management / Access Control Management) as the closest seeded proxy framework controls -- ZTMM itself has no seeded Framework row, so this is an editorial crosswalk, not a CISA-published one. levelDescriptors below reproduce CISA Table 2's \"Authentication\" function row verbatim (chosen as the pillar's defining function) rather than all four Identity functions.",
+      "domain": "Pillar",
+      "weight": 1,
+      "sortOrder": 0,
+      "levelDescriptors": {
+        "traditional": "Agency authenticates identity using either passwords or multi-factor authentication (MFA) with static access for entity identity. (Table 2: Identity Pillar -- Authentication, Traditional.)",
+        "initial": "Agency authenticates identity using MFA, which may include passwords as one factor and requires validation of multiple entity attributes (e.g., locale or activity). (Table 2: Identity Pillar -- Authentication, Initial.)",
+        "advanced": "Agency begins to authenticate all identity using phishing-resistant MFA and attributes, including initial implementation of passwordless MFA via FIDO2 or PIV. (Table 2: Identity Pillar -- Authentication, Advanced.)",
+        "optimal": "Agency continuously validates identity with phishing-resistant MFA, not just when access is initially granted. (Table 2: Identity Pillar -- Authentication, Optimal.)"
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.AA-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.AA-03",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.AA-05",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "5.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "6.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "6.5",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "devices",
+      "name": "Devices",
+      "description": "\"A device refers to any asset (including its hardware, software, firmware, etc.) that can connect to a network, including servers, desktop and laptop machines, printers, mobile phones, IoT devices, networking equipment, and more.\" (CISA ZTMM v2.0 Section 5.2, p.16, quoted verbatim.) The pillar covers policy enforcement & compliance monitoring, asset & supply chain risk management, resource access, and device threat protection (Table 3). controlMappings map to nist-csf-2 ID.AM-01 (hardware inventories), PR.PS-03 (hardware lifecycle), DE.CM-09 (hardware/software/runtime monitoring) and CIS Controls v8 Control 1 (Enterprise Asset Inventory) / 4.10 (device lockout) as the closest seeded proxy -- editorial crosswalk, not CISA-published. levelDescriptors reproduce Table 3's \"Policy Enforcement & Compliance Monitoring\" row (a Table-3 \"New Function\" in v2.0), chosen as the pillar's defining function.",
+      "domain": "Pillar",
+      "weight": 1,
+      "sortOrder": 1,
+      "levelDescriptors": {
+        "traditional": "Agency has limited, if any, visibility (i.e., ability to inspect device behavior) into device compliance with few methods of enforcing policies or managing software, configurations, or vulnerabilities. (Table 3: Devices Pillar -- Policy Enforcement & Compliance Monitoring, Traditional.)",
+        "initial": "Agency receives self-reported device characteristics (e.g., keys, tokens, users, etc., on the device) but has limited enforcement mechanisms. Agency has a preliminary, basic process in place to approve software use and push updates and configuration changes to devices. (Table 3: Devices Pillar -- Policy Enforcement & Compliance Monitoring, Initial.)",
+        "advanced": "Agency has verified insights (i.e., an administrator can inspect and verify the data on device) on initial access to device and enforces compliance for most devices and virtual assets. Agency uses automated methods to manage devices and virtual assets, approve software, and identify vulnerabilities and install patches. (Table 3: Devices Pillar -- Policy Enforcement & Compliance Monitoring, Advanced.)",
+        "optimal": "Agency continuously verifies insights and enforces compliance throughout the lifetime of devices and virtual assets. Agency integrates device, software, configuration, and vulnerability management across all agency environments, including for virtual assets. (Table 3: Devices Pillar -- Policy Enforcement & Compliance Monitoring, Optimal.)"
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "ID.AM-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.PS-03",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "DE.CM-09",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "1.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "4.10",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "networks",
+      "name": "Networks",
+      "description": "\"A network refers to an open communications medium including typical channels such as agency internal networks, wireless networks, and the Internet as well as other potential channels such as cellular and application-level channels used to transport messages.\" (CISA ZTMM v2.0 Section 5.3, p.20, quoted verbatim.) The pillar covers network segmentation, network traffic management, traffic encryption, and network resilience (Table 4). controlMappings map to nist-csf-2 PR.IR-01 (network access protection) and PR.DS-02 (data-in-transit) and CIS Controls v8 12.2 (secure network architecture) / 13.4 (traffic filtering between segments) as the closest seeded proxy -- editorial crosswalk, not CISA-published. levelDescriptors reproduce Table 4's \"Network Segmentation\" row, chosen as the pillar's defining function.",
+      "domain": "Pillar",
+      "weight": 1,
+      "sortOrder": 2,
+      "levelDescriptors": {
+        "traditional": "Agency defines their network architecture using large perimeter/macro-segmentation with minimal restrictions on reachability within network segments. Agency may also rely on multi-service interconnections (e.g., bulk traffic VPN tunnels). (Table 4: Networks Pillar -- Network Segmentation, Traditional.)",
+        "initial": "Agency begins to deploy network architecture with the isolation of critical workloads, constraining connectivity to least function principles, and a transition toward service-specific interconnections. (Table 4: Networks Pillar -- Network Segmentation, Initial.)",
+        "advanced": "Agency expands deployment of endpoint and application profile isolation mechanisms to more of their network architecture with ingress/egress micro-perimeters and service-specific interconnections. (Table 4: Networks Pillar -- Network Segmentation, Advanced.)",
+        "optimal": "Agency network architecture consists of fully distributed ingress/egress micro-perimeters and extensive micro-segmentation based around application profiles with dynamic just-in-time and just-enough connectivity for service-specific interconnections. (Table 4: Networks Pillar -- Network Segmentation, Optimal.)"
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.IR-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.DS-02",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "12.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "13.4",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "applications-workloads",
+      "name": "Applications & Workloads",
+      "description": "\"Applications and workloads include agency systems, computer programs, and services that execute on-premises, on mobile devices, and in cloud environments.\" (CISA ZTMM v2.0 Section 5.4, p.23, quoted verbatim.) The pillar covers application access, application threat protections, accessible applications, secure application development & deployment workflow, and application security testing (Table 5). controlMappings map to nist-csf-2 PR.PS-06 (secure SDLC) and CIS Controls v8 Control 16 (Application Software Security) items 16.1/16.4/16.13 as the closest seeded proxy -- editorial crosswalk, not CISA-published. levelDescriptors reproduce Table 5's \"Application Access\" row, chosen as the pillar's defining function.",
+      "domain": "Pillar",
+      "weight": 1,
+      "sortOrder": 3,
+      "levelDescriptors": {
+        "traditional": "Agency authorizes access to applications primarily based on local authorization and static attributes. (Table 5: Applications and Workloads -- Application Access, Traditional.)",
+        "initial": "Agency begins to implement authorizing access capabilities to applications that incorporate contextual information (e.g., identity, device compliance, and/or other attributes) per request with expiration. (Table 5: Applications and Workloads -- Application Access, Initial.)",
+        "advanced": "Agency automates application access decisions with expanded contextual information and enforced expiration conditions that adhere to least privilege principles. (Table 5: Applications and Workloads -- Application Access, Advanced.)",
+        "optimal": "Agency continuously authorizes application access, incorporating real-time risk analytics and factors such as behavior or usage patterns. (Table 5: Applications and Workloads -- Application Access, Optimal.)"
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.PS-06",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.1",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "16.13",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "data",
+      "name": "Data",
+      "description": "\"Data includes all structured and unstructured files and fragments that reside or have resided in federal systems, devices, networks, applications, databases, infrastructure, and backups (including on-premises and virtual environments) as well as the associated metadata.\" (CISA ZTMM v2.0 Section 5.5, p.26, quoted verbatim.) The pillar covers data inventory management, data categorization, data availability, data access, and data encryption (Table 6). controlMappings map to nist-csf-2 PR.DS-01 (data-at-rest) / PR.DS-10 (data-in-use) and CIS Controls v8 Control 3 (Data Protection) items 3.2/3.7/3.11/3.13 as the closest seeded proxy -- editorial crosswalk, not CISA-published. levelDescriptors reproduce Table 6's \"Data Access\" row, chosen as the pillar's defining function.",
+      "domain": "Pillar",
+      "weight": 1,
+      "sortOrder": 4,
+      "levelDescriptors": {
+        "traditional": "Agency governs user and entity access (e.g., permissions to read, write, copy, grant others access, etc.) to data through static access controls. (Table 6: Data -- Data Access, Traditional.)",
+        "initial": "Agency begins to deploy automated data access controls that incorporate elements of least privilege across the enterprise. (Table 6: Data -- Data Access, Initial.)",
+        "advanced": "Agency automates data access controls that consider various attributes such as identity, device risk, application, data category, etc., and are time limited where applicable. (Table 6: Data -- Data Access, Advanced.)",
+        "optimal": "Agency automates dynamic just-in-time and just-enough data access controls enterprise-wide with continuous review of permissions. (Table 6: Data -- Data Access, Optimal.)"
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.DS-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "PR.DS-10",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.7",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.11",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "3.13",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "visibility-analytics",
+      "name": "Visibility and Analytics",
+      "description": "Cross-cutting capability, not a pillar -- weighted 0.5 (half a pillar's weight) in this pack so it informs the rollup without dominating the five pillars it spans (docs/design/maturity-engine.md rollup is weight-normalized; see the pack author's report for the rationale). \"Visibility refers to the observable artifacts that result from the characteristics of and events within enterprise-wide environments. The focus on cyber-related data analysis can help inform policy decisions, facilitate response activities, and build a risk profile to develop proactive security measures before an incident occurs.\" (CISA ZTMM v2.0 Section 5, p.11, quoted verbatim.) controlMappings map to nist-csf-2 DE.CM-01 (network monitoring) / DE.AE-03 (correlation across sources) and CIS Controls v8 Control 8 (Audit Log Management) items 8.2/8.9/8.11 -- editorial crosswalk, not CISA-published. levelDescriptors reproduce Table 7's general (not per-pillar) \"Visibility and Analytics\" row verbatim.",
+      "domain": "Cross-Cutting Capability",
+      "weight": 0.5,
+      "sortOrder": 5,
+      "levelDescriptors": {
+        "traditional": "Agency manually collects limited logs across their enterprise with low fidelity and minimal analysis. (Table 7: Cross-Cutting Capabilities -- Visibility and Analytics, Traditional.)",
+        "initial": "Agency begins to automate the collection and analysis of logs and events for mission critical functions and regularly assesses processes for gaps in visibility. (Table 7: Cross-Cutting Capabilities -- Visibility and Analytics, Initial.)",
+        "advanced": "Agency expands the automated collection of logs and events enterprise-wide (including virtual environments) for centralized analysis that correlates across multiple sources. (Table 7: Cross-Cutting Capabilities -- Visibility and Analytics, Advanced.)",
+        "optimal": "Agency maintains comprehensive visibility enterprise-wide via centralized dynamic monitoring and advanced analysis of logs and events. (Table 7: Cross-Cutting Capabilities -- Visibility and Analytics, Optimal.)"
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "DE.CM-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "DE.AE-03",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.2",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.9",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "8.11",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "automation-orchestration",
+      "name": "Automation and Orchestration",
+      "description": "Cross-cutting capability, not a pillar -- weighted 0.5 (half a pillar's weight) in this pack so it informs the rollup without dominating the five pillars it spans (docs/design/maturity-engine.md rollup is weight-normalized; see the pack author's report for the rationale). \"Zero trust makes full use of automated tools and workflows that support security response functions across products and services while maintaining oversight, security, and interaction of the development process for such functions, products, and services.\" (CISA ZTMM v2.0 Section 5, p.11, quoted verbatim.) controlMappings map to nist-csf-2 RS.MA-01 (IR plan execution) / RS.MI-01 (incident containment) and CIS Controls v8 7.3/7.4 (automated OS/application patch management) as the closest seeded proxy for automated response/orchestration -- editorial crosswalk, not CISA-published. levelDescriptors reproduce Table 7's general \"Automation and Orchestration\" row verbatim.",
+      "domain": "Cross-Cutting Capability",
+      "weight": 0.5,
+      "sortOrder": 6,
+      "levelDescriptors": {
+        "traditional": "Agency relies on static and manual processes to orchestrate operations and response activities with limited automation. (Table 7: Cross-Cutting Capabilities -- Automation and Orchestration, Traditional.)",
+        "initial": "Agency begins automating orchestration and response activities in support of critical mission functions. (Table 7: Cross-Cutting Capabilities -- Automation and Orchestration, Initial.)",
+        "advanced": "Agency automates orchestration and response activities enterprise-wide, leveraging contextual information from multiple sources to inform decisions. (Table 7: Cross-Cutting Capabilities -- Automation and Orchestration, Advanced.)",
+        "optimal": "Agency orchestration and response activities dynamically respond to enterprise-wide changing requirements and environmental changes. (Table 7: Cross-Cutting Capabilities -- Automation and Orchestration, Optimal.)"
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RS.MA-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "RS.MI-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "7.3",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "7.4",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "cis-controls",
+          "controlKey": "17.4",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    },
+    {
+      "key": "governance",
+      "name": "Governance",
+      "description": "Cross-cutting capability, not a pillar -- weighted 0.5 (half a pillar's weight) in this pack so it informs the rollup without dominating the five pillars it spans (docs/design/maturity-engine.md rollup is weight-normalized; see the pack author's report for the rationale). \"Governance refers to the definition and associated enforcement of agency cybersecurity policies, procedures, and processes, within and across pillars, to manage an agency's enterprise and mitigate security risks in support of zero trust principles and fulfillment of federal requirements.\" (CISA ZTMM v2.0 Section 5, p.11, quoted verbatim.) controlMappings map to nist-csf-2 GV.PO-01/GV.PO-02 (policy establishment/review) and GV.RR-02/GV.OV-03 (roles and performance review) as the closest seeded proxy -- editorial crosswalk, not CISA-published; no CIS Controls v8 mapping exists since CIS Controls doesn't publish a distinct enterprise-governance-policy safeguard family comparable to NIST CSF's Govern function. levelDescriptors reproduce Table 7's general \"Governance\" row verbatim.",
+      "domain": "Cross-Cutting Capability",
+      "weight": 0.5,
+      "sortOrder": 7,
+      "levelDescriptors": {
+        "traditional": "Agency implements policies in an ad hoc manner across the enterprise, with policies enforced via manual processes or static technical mechanisms. (Table 7: Cross-Cutting Capabilities -- Governance, Traditional.)",
+        "initial": "Agency defines and begins implementing policies for enterprise-wide enforcement with minimal automation and manual updates. (Table 7: Cross-Cutting Capabilities -- Governance, Initial.)",
+        "advanced": "Agency implements tiered, tailored policies enterprise-wide and leverages automation where possible to support enforcement. Access policy decisions incorporate contextual information from multiple sources. (Table 7: Cross-Cutting Capabilities -- Governance, Advanced.)",
+        "optimal": "Agency implements and fully automates enterprise-wide policies that enable tailored local controls with continuous enforcement and dynamic updates. (Table 7: Cross-Cutting Capabilities -- Governance, Optimal.)"
+      },
+      "controlMappings": [
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.PO-01",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.PO-02",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.RR-02",
+          "weight": 1
+        },
+        {
+          "frameworkSlug": "nist-csf-2",
+          "controlKey": "GV.OV-03",
+          "weight": 1
+        }
+      ],
+      "previousKeys": []
+    }
+  ]
+}
